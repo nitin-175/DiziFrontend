@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 export default function LandingHero({
   images = [
-    { src: "/assets/crousel1.jpg", alt: "Slide 1" },
+    { src: "/assets/crosel1.jpg", alt: "Slide 1" },
     { src: "/assets/crausel2.jpg", alt: "Slide 2" },
   ],
   autoPlay = true,
