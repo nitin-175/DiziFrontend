@@ -6,12 +6,13 @@ export default function LandingHero({
     { src: "/assets/crausel2.jpg", alt: "Slide 2" },
   ],
   autoPlay = true,
-  interval = 4000, // ms
+  interval = 4000,
 }) {
   const [index, setIndex] = useState(0);
   const timerRef = useRef(null);
 
-  // Ensure exactly 2 slides
+ 
+
   const slides = images.slice(0, 2);
   if (slides.length < 2) {
     console.warn("TwoImageCarousel needs 2 images. Using fallback duplicates.");
@@ -20,7 +21,7 @@ export default function LandingHero({
 
   const go = (dir) => setIndex((prev) => (prev + dir + 2) % 2);
 
-  // autoplay
+ 
   useEffect(() => {
     if (!autoPlay) return;
     timerRef.current = setInterval(() => go(1), interval);
@@ -39,7 +40,7 @@ export default function LandingHero({
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      {/* Slides */}
+      
       {slides.map((s, i) => (
         <img
           key={i}
@@ -52,7 +53,7 @@ export default function LandingHero({
         />
       ))}
 
-      {/* Prev */}
+      
       <button
         onClick={() => go(-1)}
         className="absolute left-3 top-1/2 -translate-y-1/2 grid place-items-center h-10 w-10 rounded-full bg-black/40 hover:bg-black/60 focus:outline-none"
@@ -66,7 +67,7 @@ export default function LandingHero({
         </svg>
       </button>
 
-      {/* Next */}
+      
       <button
         onClick={() => go(1)}
         className="absolute right-3 top-1/2 -translate-y-1/2 grid place-items-center h-10 w-10 rounded-full bg-black/40 hover:bg-black/60 focus:outline-none"
@@ -80,7 +81,7 @@ export default function LandingHero({
         </svg>
       </button>
 
-      {/* Dots */}
+      
       <div className="absolute left-1/2 bottom-3 -translate-x-1/2 flex gap-2">
         {[0, 1].map((i) => (
           <button
