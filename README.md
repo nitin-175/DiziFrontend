@@ -1,12 +1,39 @@
-# React + Vite
+<h1 align="center">🎬✨ DiziFrontend</h1>  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  🚀 A sleek, responsive, and modern frontend for the <b>Dizi</b> project — delivering a smooth and engaging user experience.  
+</p>
 
-Currently, two official plugins are available:
+<p align="center">
+  <img src="https://img.shields.io/github/repo-size/nitin-175/DiziFrontend?color=brightgreen" alt="Repo Size">
+  <img src="https://img.shields.io/github/stars/nitin-175/DiziFrontend?color=yellow" alt="Stars">
+  <img src="https://img.shields.io/github/forks/nitin-175/DiziFrontend?color=blue" alt="Forks">
+  <img src="https://img.shields.io/github/license/nitin-175/DiziFrontend?color=orange" alt="License">
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🌐 Live Demo  
+🚀 **Check out the deployed version here:**  
+🔗 [**Click to View DiziFrontend**](https://your-deployment-link.com)  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📌 Features  
+✨ **Responsive Design** — Works seamlessly on all devices  
+⚡ **Fast Performance** — Optimized assets & clean structure  
+🎨 **Modern UI** — Built with love using React & TailwindCSS  
+♻ **Reusable Components** — For easy scalability  
+🌍 **Cross-Browser Compatibility** — Chrome, Edge, Firefox, Safari  
+
+---
+
+## 🛠️ Tech Stack  
+| Technology      | Purpose |
+|-----------------|---------|
+| ⚛ **React.js**  | Component-based UI |
+| 🎨 **Tailwind CSS** | Styling & responsiveness |
+| 🌐 **JavaScript (ES6+)** | Interactivity |
+| 📦 **NPM**      | Package management |
+
+---
