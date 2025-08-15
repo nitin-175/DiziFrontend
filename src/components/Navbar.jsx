@@ -93,14 +93,14 @@ const Navbar = () => {
       <nav >
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <ul className="flex justify-center items-center space-x-10 py-2 text-base font-medium text-gray-700">
-            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Shop All</a></li>
-            <li><a href="#" className="flex items-center hover:text-yellow-500 transition-colors duration-200">Flower <DropdownArrow /></a></li>
-            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Edibles</a></li>
-            <li><a href="#" className="flex items-center hover:text-yellow-500 transition-colors duration-200">Concentrates <DropdownArrow /></a></li>
-            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Mushrooms</a></li>
-            <li><a href="#" className="flex items-center hover:text-yellow-500 transition-colors duration-200">Promotions/Bundles <DropdownArrow /></a></li>
-            <li><a href="#" className="flex items-center hover:text-yellow-500 transition-colors duration-200">Support <DropdownArrow /></a></li>
-            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Rewards</a></li>
+            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Home</a></li>
+            <li><a href="#" className="flex items-center hover:text-yellow-500 transition-colors duration-200">Veda Store <DropdownArrow /></a></li>
+            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Astrology Courses</a></li>
+            <li><a href="#" className="flex items-center hover:text-yellow-500 transition-colors duration-200">Astro Report <DropdownArrow /></a></li>
+            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Talk to astrologer</a></li>
+            <li><a href="#" className="flex items-center hover:text-yellow-500 transition-colors duration-200">Puja <DropdownArrow /></a></li>
+            <li><a href="#" className="flex items-center hover:text-yellow-500 transition-colors duration-200">Contact <DropdownArrow /></a></li>
+            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Articles</a></li>
             <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Blog</a></li>
           </ul>
         </div>
