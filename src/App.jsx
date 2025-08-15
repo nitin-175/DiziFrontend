@@ -21,6 +21,8 @@ function App() {
       <Navbar />
 
       <LandingHero/>
+      <Hero2 />
+      <Hero5 />
 
       <CuponSection/>
 
