@@ -8,11 +8,9 @@ export default function Footer() {
       style={{
         background: 'linear-gradient(90deg, hsla(351, 100%, 25%, 1) 0%, hsla(9, 59%, 7%, 1) 100%)',
       }}
-      className="text-gray-400 w-full h-auto mt-5 p-4 sm:p-6 lg:p-10 pt-20 sm:pt-28"
+      className="text-gray-400 w-full h-130 mt-5 p-4 sm:p-6 lg:pt-43 pt-20 sm:pt-28"
     >
       <div className="flex flex-col md:flex-row md:justify-evenly gap-8 md:gap-12">
-
-        {/* Brand Section */}
         <div className="w-full md:w-1/4">
           <img className="h-10" src="assets/logo.png" alt="VedaStructure Logo" />
           <p className="mt-3 text-sm leading-relaxed">
@@ -20,7 +18,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Links Section 1 */}
         <div>
           <FooterHeadings HeadingName="Company" />
           <ul className="space-y-2 text-sm">
@@ -31,7 +28,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Links Section 2 */}
         <div>
           <FooterHeadings HeadingName="Resources" />
           <ul className="space-y-2 text-sm">
@@ -42,7 +38,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Quick Links */}
         <div>
           <FooterHeadings HeadingName="Quick Links" />
           <ul className="space-y-2 text-sm">
@@ -53,22 +48,17 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Newsletter Section */}
         <div className="w-full md:w-1/4">
           <FooterHeadings HeadingName="Contact Us" />
           <p className="text-sm mb-3">care@vedastructure.com</p>
           <p className="text-sm mb-3 leading-5">Varanasi, Uttar Pradesh 221001</p>
           <p className="text-sm mb-3">Subscribe to our newsletter</p>
-
-          {/* Social Icons */}
           <ul className="flex pt-2 gap-3 text-xl">
             <li><a href="#" className="hover:text-white transition duration-200"><FaInstagram /></a></li>
             <li><a href="#" className="hover:text-white transition duration-200"><FaXTwitter /></a></li>
             <li><a href="#" className="hover:text-white transition duration-200"><FaFacebookF /></a></li>
             <li><a href="#" className="hover:text-white transition duration-200"><FaLinkedinIn /></a></li>
           </ul>
-
-          {/* Payment Icons */}
           <div className="mt-4">
             <FooterHeadings HeadingName="Payments" />
             <ul className="flex flex-wrap gap-3">
@@ -81,7 +71,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div className="border-t mt-10 p-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-400 text-center sm:text-left">
         <p className="text-sm hover:text-white">© {new Date().getFullYear()} VedaStructure. All rights reserved.</p>
         <div className="flex flex-col sm:flex-row gap-3 text-sm">
@@ -104,12 +93,5 @@ function FooterListImages({ image, link }) {
         <img src={image} alt="payment option" className="h-8 w-auto" />
       </a>
     </li>
-  )
+  );
 }
-
-
-
-
-
-
-

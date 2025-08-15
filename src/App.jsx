@@ -3,7 +3,7 @@ import React from "react";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LandingHero from './components/LandingHero';
-import SupportIcon from './components/SupportIcon';
+import CuponSection from './components/CuponSection';
 
 
 
@@ -19,9 +19,10 @@ function App() {
 
       <LandingHero/>
 
+      <CuponSection/>
+
       <Footer/>
 
-      <SupportIcon/>
       
     </div>
   );
