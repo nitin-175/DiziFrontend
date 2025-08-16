@@ -29,7 +29,7 @@ It’s designed as a **professional-grade frontend** with clean UI/UX, responsiv
 
 ## 🔗 Live Demo  
 
-👉 [**Check it out here**](https://your-deployment-link.com) 🌍  
+👉 [**Check it out here**](https://dizi-frontend.vercel.app/) 🌍  
 
 ---
 
@@ -40,7 +40,7 @@ Here’s a quick peek at the site in action 👇
 ![DiziFrontend Demo](./public/preview.gif)
 
 <p align="center">
-  <a href="https://dizifrontend.vercel.app/" target="_blank">
+  <a href="https://dizi-frontend.vercel.app/" target="_blank">
     <img src="https://img.shields.io/badge/🚀 Live Demo-Click%20Here-brightgreen?style=for-the-badge&logo=vercel" alt="Live Demo"/>
   </a>
 </p>
