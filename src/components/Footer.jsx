@@ -6,7 +6,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: 'linear-gradient(90deg, hsla(351, 100%, 25%, 1) 0%, hsla(9, 59%, 7%, 1) 100%)',
+        background: 'linear-gradient(180deg, #1A1E26 0%, #01100B 100%)',
+
       }}
       className="text-gray-400 w-full h-130 mt-5 p-4 sm:p-6 lg:pt-43 pt-20 sm:pt-28"
     >
