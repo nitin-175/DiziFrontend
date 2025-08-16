@@ -9,7 +9,7 @@ export default function Footer() {
         background: 'linear-gradient(180deg, #1A1E26 0%, #01100B 100%)',
 
       }}
-      className="text-gray-400 w-full h-130 mt-5 p-4 sm:p-6 lg:pt-43 pt-20 sm:pt-28"
+      className="text-gray-400 w-full h-auto lg:h-130 mt-5 p-4 sm:p-6 lg:pt-43 pt-20 sm:pt-28"
     >
       <div className="flex flex-col md:flex-row md:justify-evenly gap-8 md:gap-12">
         <div className="w-full md:w-1/4">
