@@ -11,6 +11,8 @@ import HowToOrder from './components/HowToOrder';
 import ReferAFriend from './components/ReferAFriend';
 import Info from './components/Info';
 import RecentlyAdded from './components/RecentlyAdded';
+import ItemsCategory from './components/ItemsCategory';
+import EducationSection from './components/EducationSection';
 
 
 
@@ -29,6 +31,10 @@ function App() {
       <HowToOrder />
       <Info />
       <RecentlyAdded />
+
+      <ItemsCategory/>
+
+      <EducationSection/>
       
       <CuponSection/>
 
