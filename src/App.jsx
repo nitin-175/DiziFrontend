@@ -13,6 +13,7 @@ import Info from './components/Info';
 import RecentlyAdded from './components/RecentlyAdded';
 import ItemsCategory from './components/ItemsCategory';
 import EducationSection from './components/EducationSection';
+import Filters from './components/CategoryPage/Filters';
 
 
 
@@ -40,7 +41,7 @@ function App() {
 
       <Footer/>
 
-      
+      {/* <Filters/> */}
     </div>
   );
 }

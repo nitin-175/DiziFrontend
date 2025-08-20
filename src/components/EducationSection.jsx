@@ -1,5 +1,38 @@
 import React from "react";
 
+function SectionHeader() {
+  return (
+    <div className="flex justify-between items-center mb-8">
+      <h2 className="text-3xl font-bold text-gray-800">Spiritual Education</h2>
+      <a href="#" className="text-yellow-600 font-medium hover:underline">
+        Show All
+      </a>
+    </div>
+  );
+}
+
+function ArticleCard({ date, title, description, image, link }) {
+  return (
+    <div className="bg-white border-2 border-yellow-500 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition flex flex-col">
+      <div className="overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-72 object-cover transition-transform duration-500 hover:scale-105"
+        />
+      </div>
+      <div className="p-5 flex flex-col flex-1">
+        <p className="text-gray-400 text-sm">{date}</p>
+        <h3 className="text-lg font-semibold text-gray-800 mt-2">{title}</h3>
+        <p className="text-gray-600 text-sm mt-3 flex-1">{description}</p>
+        <a href={link} className="text-yellow-600 font-semibold hover:underline mt-4">
+          Read More →
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export default function EducationSection() {
   const articles = [
     {
@@ -34,47 +67,10 @@ export default function EducationSection() {
   return (
     <section className="px-6 py-12 bg-gray-50">
       <div className="max-w-6xl mx-auto">
-        {/* Section Heading */}
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800">Spiritual Education</h2>
-          <a href="#" className="text-yellow-600 font-medium hover:underline">
-            Show All
-          </a>
-        </div>
-
-        {/* Cards Grid */}
+        <SectionHeader />
         <div className="grid gap-8 md:grid-cols-3">
           {articles.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white border-2 border-yellow-500 rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition duration-300 flex flex-col"
-            >
-              {/* Image with hover effect */}
-              <div className="overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-72 object-cover transform transition-transform duration-500 hover:scale-110 hover:rotate-1"
-                />
-              </div>
-
-              {/* Text */}
-              <div className="p-5 flex flex-col flex-1">
-                <p className="text-gray-400 text-sm">{item.date}</p>
-                <h3 className="text-lg font-semibold text-gray-800 mt-2">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-sm mt-3 flex-1">
-                  {item.description}
-                </p>
-                <a
-                  href={item.link}
-                  className="text-yellow-600 font-semibold hover:underline block mt-4"
-                >
-                  Read More →
-                </a>
-              </div>
-            </div>
+            <ArticleCard key={index} {...item} />
           ))}
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-// ================= Subcomponents =================
+
 
 function SlideImage({ src, alt, isActive }) {
   return (
@@ -109,7 +109,7 @@ function Indicators({ count, activeIndex, setIndex }) {
   );
 }
 
-// ================= Main Component =================
+
 
 export default function LandingHero({
   images = [
