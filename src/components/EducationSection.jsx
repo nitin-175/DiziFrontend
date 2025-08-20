@@ -13,19 +13,22 @@ function SectionHeader() {
 
 function ArticleCard({ date, title, description, image, link }) {
   return (
-    <div className="bg-white border-2 border-yellow-500 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition flex flex-col">
+    <div className="bg-white border-2 border-yellow-500 rounded-lg overflow-hidden shadow-md flex flex-col transition duration-500">
       <div className="overflow-hidden">
         <img
           src={image}
           alt={title}
-          className="w-full h-72 object-cover transition-transform duration-500 hover:scale-105"
+          className="w-full h-72 object-cover transition-transform duration-700 ease-in-out transform hover:scale-110 hover:rotate-1"
         />
       </div>
       <div className="p-5 flex flex-col flex-1">
         <p className="text-gray-400 text-sm">{date}</p>
         <h3 className="text-lg font-semibold text-gray-800 mt-2">{title}</h3>
         <p className="text-gray-600 text-sm mt-3 flex-1">{description}</p>
-        <a href={link} className="text-yellow-600 font-semibold hover:underline mt-4">
+        <a
+          href={link}
+          className="text-yellow-600 font-semibold hover:underline mt-4"
+        >
           Read More →
         </a>
       </div>
