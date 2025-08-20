@@ -1,13 +1,12 @@
 import React from 'react';
 import { FaShippingFast, FaShieldAlt, FaDollarSign } from 'react-icons/fa';
 
-const Hero2 = () => {
+export default function Hero2() {
   return (
     <section className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-x-12">
 
-          {/* Feature 1: Reliable & Fast Delivery */}
           <div className="text-center">
             <div className="flex items-center justify-center h-24 w-24 rounded-full bg-yellow-400 mx-auto mb-5">
               <FaShippingFast className="h-12 w-12 text-white" />
@@ -20,7 +19,6 @@ const Hero2 = () => {
             </p>
           </div>
 
-          {/* Feature 2: Authentic & Secure */}
           <div className="text-center">
             <div className="flex items-center justify-center h-24 w-24 rounded-full bg-yellow-400 mx-auto mb-5">
               <FaShieldAlt className="h-12 w-12 text-white" />
@@ -33,7 +31,6 @@ const Hero2 = () => {
             </p>
           </div>
 
-          {/* Feature 3: Best Quality & Value */}
           <div className="text-center">
             <div className="flex items-center justify-center h-24 w-24 rounded-full bg-yellow-400 mx-auto mb-5">
               <FaDollarSign className="h-12 w-12 text-white" />
@@ -50,6 +47,4 @@ const Hero2 = () => {
       </div>
     </section>
   );
-};
-
-export default Hero2;
+}

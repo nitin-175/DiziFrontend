@@ -146,16 +146,16 @@ const products = [
 
 const categories = ['Shop All Products','RUDRAKSHA', 'GEMSTONES', 'BRACELETS', 'Mala Beads'];
 
-const ProductCard = ({ product, onAddToCart }) => {
+function ProductCard({ product, onAddToCart }) {
     const isOutOfStock = product.status === 'outOfStock';
 
     return (
-        <div className="group relative flex flex-col rounded-lg bg-white shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02]">
+        <div className=" group relative flex flex-col rounded-lg bg-white shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02]">
             <div className="relative bg-gray-50 p-4 rounded-t-lg h-56 flex items-center justify-center overflow-hidden">
                 <img
                     src={product.imageUrl}
                     alt={product.name}
-                    className={`max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-110 ${isOutOfStock ? 'opacity-60' : 'opacity-100'}`}
+                    className={`max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3 ${isOutOfStock ? 'opacity-60' : 'opacity-100'}`}
                 />
                 {isOutOfStock && (
                     <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-50 backdrop-blur-sm">
@@ -202,9 +202,9 @@ const ProductCard = ({ product, onAddToCart }) => {
             </div>
         </div>
     );
-};
+}
 
-const SpiritualProducts = () => {
+export default function SpiritualProducts() {
     const [activeFilter, setActiveFilter] = useState('Shop All Products');
     const [cart, setCart] = useState([]);
 
@@ -220,7 +220,7 @@ const SpiritualProducts = () => {
         : products.filter(p => p.category.toUpperCase() === getNormalizedFilter(activeFilter));
 
     return (
-        <div className="bg-orange-50">
+        <div className="bg-orange-50 ">
             <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
                 <div className="text-left ml-9">
                     <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
@@ -251,5 +251,3 @@ const SpiritualProducts = () => {
         </div>
     );
 }
-
-export default SpiritualProducts;
