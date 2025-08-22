@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useCart } from '../context/CartContext';
 import { FaStar } from 'react-icons/fa';
 
 // --- UPDATED DUMMY DATA ---
@@ -149,7 +150,8 @@ const products = [
 const categories = ['Shop All Products','RUDRAKSHA', 'GEMSTONES', 'BRACELETS', 'Mala Beads'];
 
 // --- Product Card Component ---
-const ProductCard = ({ product, onAddToCart }) => {
+const ProductCard = ({ product }) => {
+    const { addToCart } = useCart();
     const isOutOfStock = product.status === 'outOfStock';
 
     return (
@@ -197,7 +199,7 @@ const ProductCard = ({ product, onAddToCart }) => {
                 </div>
 
                 <button
-                    onClick={() => onAddToCart(product)}
+                    onClick={() => addToCart(product)}
                     disabled={isOutOfStock}
                         className="w-32 rounded-full bg-orange-500 py-2 px-4 font-bold text-white transition duration-300 hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-gray-300 mx-auto cursor-pointer"
                 >
@@ -260,7 +262,7 @@ const SpiritualProducts = () => {
                 {/* Products Grid */}
                 <div className="mt-12 grid grid-cols-1 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {filteredProducts.map(product => (
-                        <ProductCard key={product.id} product={product} onAddToCart={handleAddToCart} />
+                        <ProductCard key={product.id} product={product} />
                     ))}
                 </div>
             </div>

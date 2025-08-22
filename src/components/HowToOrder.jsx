@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaClipboardList, FaShoppingBag, FaCreditCard, FaCheckCircle } from 'react-icons/fa';
-import ReferAFriend from './ReferAFriend'; 
 
 // SVG dashed connecting line
 const ConnectingLine = ({ reverse = false }) => {
@@ -26,16 +25,13 @@ const ConnectingLine = ({ reverse = false }) => {
 
 const HowToOrder = () => {
     return (
-        <div className="bg-gray-900">
+        // A negative margin pulls this entire component upwards
+        <div className="bg-gray-900 -mt-24">
             <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-                {/* ✅ Refer a Friend banner appears here */}
-                <div className="relative z-10 -mt-16">
-                    <ReferAFriend />
-                </div>
-
+                
                 {/* How to Order Section */}
-                <div className="pt-24 text-center text-white">
+                {/* Top padding pushes the content down to create space for the overlapping component */}
+                <div className="pt-32 text-center text-white">
                     <h2 className="text-3xl font-extrabold uppercase tracking-tight sm:text-4xl md:text-5xl">
                         How to order weed online <br /> from top shelf bc - mail order marijuana
                     </h2>

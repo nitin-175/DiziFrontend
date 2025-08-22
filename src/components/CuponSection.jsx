@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function CuponSection() {
   return (
-    <div className="flex justify-center items-center px-4 mt-5 relative -mb-28">
+    <div className="flex justify-center items-center px-4 mt-5 relative -mb-24">
       <div className="bg-[#05422C] rounded-2xl sm:w-4/5 md:w-3/6 p-4 sm:p-6">
         <h1 className="text-white text-3xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
           UNLOCK 20% OFF YOUR <br className="hidden sm:block" /> FIRST ORDER

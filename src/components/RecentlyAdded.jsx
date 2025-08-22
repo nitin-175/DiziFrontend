@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useCart } from '../context/CartContext';
 
 // --- Data as provided in the prompt ---
 const productsData = [
@@ -125,62 +126,69 @@ const StarIcon = () => (
 
 
 // --- Product Card Component ---
-const ProductCard = ({ product }) => (
-    <div className="group relative border border-gray-200 rounded-lg p-4 flex flex-col">
-        <div className="aspect-w-1 aspect-h-1 bg-gray-100 rounded-lg overflow-hidden relative">
-            <img src={product.imageUrl} alt={product.name} className="w-full h-full object-center object-cover" />
+const ProductCard = ({ product }) => {
+    const { addToCart } = useCart();
+    return (
+        <div className="group relative border border-gray-200 rounded-lg p-4 flex flex-col">
+            <div className="aspect-w-1 aspect-h-1 bg-gray-100 rounded-lg overflow-hidden relative">
+                <img src={product.imageUrl} alt={product.name} className="w-full h-full object-center object-cover" />
 
-            {product.status === 'outOfStock' && (
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <span className="text-white text-lg font-bold">Out Of Stock</span>
-                </div>
-            )}
-             {product.tag && (
-                <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">
-                    {product.tag}
-                </div>
-            )}
-        </div>
-        <div className="pt-4 pb-2 flex-grow flex flex-col">
-            <p className="text-xs text-gray-500 uppercase tracking-wider">{product.category}</p>
-            <h3 className="text-sm font-bold text-gray-800 mt-1 flex-grow">
-                <a href="#">{product.name}</a>
-            </h3>
-            
-            <div className="flex items-center mt-2">
-                <StarIcon />
-                <span className="text-xs text-gray-600 ml-1">{product.rating}/5</span>
-                <span className="text-xs text-gray-500 ml-2">| {product.reviews} Reviews</span>
-            </div>
-
-            <p className="mt-2 text-xs text-orange-600 bg-orange-100 rounded-full px-2 py-1 self-start">
-                {product.material}
-            </p>
-
-            <div className="mt-3">
-                {product.originalPrice ? (
-                    <>
-                        <span className="text-gray-400 line-through mr-2">${product.originalPrice.toFixed(2)}</span>
-                        <span className="text-lg font-bold text-gray-900">${product.salePrice.toFixed(2)}</span>
-                    </>
-                ) : (
-                    <span className="text-lg font-bold text-gray-900">${product.salePrice.toFixed(2)}</span>
+                {product.status === 'outOfStock' && (
+                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                        <span className="text-white text-lg font-bold">Out Of Stock</span>
+                    </div>
+                )}
+                 {product.tag && (
+                    <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">
+                        {product.tag}
+                    </div>
                 )}
             </div>
+            <div className="pt-4 pb-2 flex-grow flex flex-col">
+                <p className="text-xs text-gray-500 uppercase tracking-wider">{product.category}</p>
+                <h3 className="text-sm font-bold text-gray-800 mt-1 flex-grow">
+                    <a href="#">{product.name}</a>
+                </h3>
+                
+                <div className="flex items-center mt-2">
+                    <StarIcon />
+                    <span className="text-xs text-gray-600 ml-1">{product.rating}/5</span>
+                    <span className="text-xs text-gray-500 ml-2">| {product.reviews} Reviews</span>
+                </div>
 
-             <div className="flex items-center space-x-2 mt-3 text-xs text-gray-500">
-                {product.sizes.map(size => (
-                    <button key={size} className="border border-gray-300 rounded px-2 py-1 hover:border-orange-500 hover:text-orange-600 transition">
-                        {size}
-                    </button>
-                ))}
+                <p className="mt-2 text-xs text-orange-600 bg-orange-100 rounded-full px-2 py-1 self-start">
+                    {product.material}
+                </p>
+
+                <div className="mt-3">
+                    {product.originalPrice ? (
+                        <>
+                            <span className="text-gray-400 line-through mr-2">${product.originalPrice.toFixed(2)}</span>
+                            <span className="text-lg font-bold text-gray-900">${product.salePrice.toFixed(2)}</span>
+                        </>
+                    ) : (
+                        <span className="text-lg font-bold text-gray-900">${product.salePrice.toFixed(2)}</span>
+                    )}
+                </div>
+
+                 <div className="flex items-center space-x-2 mt-3 text-xs text-gray-500">
+                    {product.sizes.map(size => (
+                        <button key={size} className="border border-gray-300 rounded px-2 py-1 hover:border-orange-500 hover:text-orange-600 transition">
+                            {size}
+                        </button>
+                    ))}
+                </div>
             </div>
+            <button
+                className="w-full bg-orange-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-600 transition-colors duration-300 disabled:bg-gray-400"
+                disabled={product.status === 'outOfStock'}
+                onClick={() => addToCart(product)}
+            >
+                Add to Cart
+            </button>
         </div>
-        <button className="w-full bg-orange-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-600 transition-colors duration-300 disabled:bg-gray-400" disabled={product.status === 'outOfStock'}>
-            Add to Cart
-        </button>
-    </div>
-);
+    );
+};
 
 
 // --- Main Recently Added Section Component ---

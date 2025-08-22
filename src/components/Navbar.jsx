@@ -1,9 +1,9 @@
 import React from 'react';
 import { FiSearch, FiUser, FiShoppingCart } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-
-    // Dropdown arrow component for navigation links
+  // Dropdown arrow component
   const DropdownArrow = () => (
     <svg
       className="w-4 h-4 ml-1.5 text-gray-500"
@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <div className="font-sans bg-white">
       {/* 1. Top Promotional Banner */}
-      <div className="bg-[#facc15] text-center py-3 px-4 ">
+      <div className="bg-[#facc15] text-center py-3 px-4">
         <p className="text-sm font-medium text-white">
           Book online Pooja services and get 10% off
         </p>
@@ -33,16 +33,15 @@ const Navbar = () => {
       <header className="border-b border-gray-200">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-
             {/* 2. Logo */}
             <div className="flex-shrink-0">
-              <a href="#" title="Veda Structure Home">
+              <Link to="/" title="Veda Structure Home">
                 <img
                   className="h-16 w-auto"
                   src="/assets/logo.png"
                   alt="Logo"
                 />
-              </a>
+              </Link>
             </div>
 
             {/* 3. Search Bar */}
@@ -67,14 +66,21 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* 4. Right-side Icons (Account & Cart) */}
+            {/* 4. Right-side Icons */}
             <div className="flex items-center space-x-6">
-              <a href="#" className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-900">
+              <Link
+                to="/account"
+                className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-900"
+              >
                 <FiUser className="h-6 w-6 mr-1" />
                 <span>Your Account</span>
-              </a>
+              </Link>
               <div className="relative">
-                <a href="#" className="group p-2 flex items-center" aria-label="Shopping Cart">
+                <Link
+                  to="/cart"
+                  className="group p-2 flex items-center"
+                  aria-label="Shopping Cart"
+                >
                   <FiShoppingCart
                     className="h-6 w-6 text-gray-700 group-hover:text-gray-900"
                     aria-hidden="true"
@@ -82,7 +88,7 @@ const Navbar = () => {
                   <span className="absolute top-0 right-0 block h-5 w-5 rounded-full bg-[#facc15] text-center text-xs font-bold text-black ring-2 ring-white">
                     0
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -90,18 +96,44 @@ const Navbar = () => {
       </header>
 
       {/* 5. Bottom Navigation Links */}
-      <nav >
+      <nav>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <ul className="flex justify-center items-center space-x-10 py-2 text-base font-medium text-gray-700">
-            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Home</a></li>
-            <li><a href="#" className="flex items-center hover:text-yellow-500 transition-colors duration-200">Veda Store <DropdownArrow /></a></li>
-            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Astrology Courses</a></li>
-            <li><a href="#" className="flex items-center hover:text-yellow-500 transition-colors duration-200">Astro Report <DropdownArrow /></a></li>
-            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Talk to astrologer</a></li>
-            <li><a href="#" className="flex items-center hover:text-yellow-500 transition-colors duration-200">Puja <DropdownArrow /></a></li>
-            <li><a href="#" className="flex items-center hover:text-yellow-500 transition-colors duration-200">Contact <DropdownArrow /></a></li>
-            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Articles</a></li>
-            <li><a href="#" className="hover:text-yellow-500 transition-colors duration-200">Blog</a></li>
+            <li>
+              <Link to="/" className="hover:text-yellow-500 transition-colors duration-200">Home</Link>
+            </li>
+            <li>
+              <Link to="/category" className="flex items-center hover:text-yellow-500 transition-colors duration-200">
+                Categories 
+              </Link>
+            </li>
+            <li>
+              <Link to="/courses" className="hover:text-yellow-500 transition-colors duration-200">Astrology Courses</Link>
+            </li>
+            <li>
+              <Link to="/astro-report" className="flex items-center hover:text-yellow-500 transition-colors duration-200">
+                Astro Report <DropdownArrow />
+              </Link>
+            </li>
+            <li>
+              <Link to="/astrologer" className="hover:text-yellow-500 transition-colors duration-200">Talk to astrologer</Link>
+            </li>
+            <li>
+              <Link to="/puja" className="flex items-center hover:text-yellow-500 transition-colors duration-200">
+                Puja <DropdownArrow />
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="flex items-center hover:text-yellow-500 transition-colors duration-200">
+                Contact <DropdownArrow />
+              </Link>
+            </li>
+            <li>
+              <Link to="/articles" className="hover:text-yellow-500 transition-colors duration-200">Articles</Link>
+            </li>
+            <li>
+              <Link to="/blog" className="hover:text-yellow-500 transition-colors duration-200">Blog</Link>
+            </li>
           </ul>
         </div>
       </nav>

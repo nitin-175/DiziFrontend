@@ -8,7 +8,7 @@ export default function Footer() {
       style={{
         background: 'linear-gradient(90deg, hsla(351, 100%, 25%, 1) 0%, hsla(9, 59%, 7%, 1) 100%)',
       }}
-      className="text-gray-400 w-full h-130 mt-5 p-4 sm:p-6 lg:pt-43 pt-20 sm:pt-28"
+  className="text-gray-400 w-full p-2 pt-32"
     >
       <div className="flex flex-col md:flex-row md:justify-evenly gap-8 md:gap-12">
         <div className="w-full md:w-1/4">
@@ -71,7 +71,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t mt-10 p-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-400 text-center sm:text-left">
+  <div className="border-t m-0 p-0 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-400 text-center sm:text-left">
         <p className="text-sm hover:text-white">© {new Date().getFullYear()} VedaStructure. All rights reserved.</p>
         <div className="flex flex-col sm:flex-row gap-3 text-sm">
           <a href="#" className="hover:text-white">Terms and Conditions</a>

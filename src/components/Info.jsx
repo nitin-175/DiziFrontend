@@ -5,12 +5,12 @@ const Info = () => {
     <div className="bg-white py-16 px-4 sm:px-6 lg:px-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-left mb-20">
-          <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-tight ml-4">
-            WHAT MAKES US THE <span className="text-yellow-500">#1</span><br />
-            ONLINE MARIJUANA<br />
-            DISPENSARY IN CANADA?
+          <h2 className="text-6xl font-extrabold text-gray-900 sm:text-7xl tracking-tight ml-4 whitespace-nowrap">
+            <span className="block">WHAT MAKES US THE <span className="text-yellow-500">#1</span></span>
+            <span className="block">ONLINE MARIJUANA</span>
+            <span className="block">DISPENSARY IN CANADA?</span>
           </h2>
-          <p className="mt-4 max-w-2xl text-lg lg:px-5 text-gray-500">
+          <p className="mt-4 max-w-3xl text-lg text-gray-500 ml-4 text-left">
             When it comes to what makes us the foremost online marijuana dispensary in Canada, we could wax lyrical about our positive qualities. Instead, to make this information clearer, we've highlighted the six prioritized features that we feel makes us a cut above the rest.
           </p>
         </div>

@@ -1,41 +1,21 @@
-import './App.css'
 import React from "react";
-import { Carousel } from "flowbite-react";
-import Navbar from './components/Navbar';
-import Hero2 from './components/Hero2';
-import Hero5 from './components/Hero5';
-import Footer from './components/Footer';
-import LandingHero from './components/LandingHero';
-import CuponSection from './components/CuponSection';
-import HowToOrder from './components/HowToOrder';
-import ReferAFriend from './components/ReferAFriend';
-import Info from './components/Info';
-import RecentlyAdded from './components/RecentlyAdded';
-
-
-
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import Category from "./pages/Category";
+import Cart from "./pages/Cart";
+import { CartProvider } from "./context/CartContext";
 function App() {
-
   return (
-    <div>
-    <Navbar />
-
-    <LandingHero/>
-    <Hero2 />
-  <Hero5 />
-  <div className="my-30"></div>
-      
-      <HowToOrder />
-      <Info />
-      <RecentlyAdded />
-      
-      <CuponSection/>
-
-      <Footer/>
-
-      
-    </div>
+    <CartProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/LandingPage" element={<LandingPage />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }
 
