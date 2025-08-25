@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// A simple reusable star rating component for the filter
+
 const StarRatingFilter = ({ rating, selectedRating, setSelectedRating }) => (
   <div className="flex items-center cursor-pointer" onClick={() => setSelectedRating(rating)}>
     <div className="flex">
