@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss"; 
 @import 'flowbite';
 @import "flowbite/src/themes/default";
 
@@ -6,6 +6,7 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 
 
 

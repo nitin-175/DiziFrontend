@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useCart } from '../context/CartContext';
 import { FaStar } from 'react-icons/fa';
 
 const products = [
@@ -146,7 +147,9 @@ const products = [
 
 const categories = ['Shop All Products','RUDRAKSHA', 'GEMSTONES', 'BRACELETS', 'Mala Beads'];
 
-function ProductCard({ product, onAddToCart }) {
+// --- Product Card Component ---
+const ProductCard = ({ product }) => {
+    const { addToCart } = useCart();
     const isOutOfStock = product.status === 'outOfStock';
 
     return (
@@ -193,7 +196,7 @@ function ProductCard({ product, onAddToCart }) {
                     </div>
                 </div>
                 <button
-                    onClick={() => onAddToCart(product)}
+                    onClick={() => addToCart(product)}
                     disabled={isOutOfStock}
                     className="w-32 rounded-full bg-orange-500 py-2 px-4 font-bold text-white transition-all duration-300 hover:bg-orange-600 hover:scale-105 disabled:cursor-not-allowed disabled:bg-gray-300 mx-auto"
                 >
@@ -223,7 +226,7 @@ export default function SpiritualProducts() {
         <div className="bg-orange-50 ">
             <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
                 <div className="text-left ml-9">
-                    <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+                    <h1 className="text-6xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
                         Discover Your Spiritual Tools
                     </h1>
                 </div>
@@ -244,7 +247,7 @@ export default function SpiritualProducts() {
                 </div>
                 <div className="mt-12 grid grid-cols-1 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {filteredProducts.map(product => (
-                        <ProductCard key={product.id} product={product} onAddToCart={handleAddToCart} />
+                        <ProductCard key={product.id} product={product} />
                     ))}
                 </div>
             </div>

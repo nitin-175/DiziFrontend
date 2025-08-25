@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaClipboardList, FaShoppingBag, FaCreditCard, FaCheckCircle } from 'react-icons/fa';
-import ReferAFriend from './ReferAFriend';
 
 function ConnectingLine({ reverse = false }) {
   const path = reverse ? "M0 100 Q50 20, 100 0" : "M0 0 Q50 80, 100 100";
@@ -74,11 +73,8 @@ function StepsGrid() {
 
 export default function HowToOrder() {
   return (
-    <div className="bg-gray-900 mt-28">
+    <div className="bg-gray-900">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative z-10 -mt-16">
-          <ReferAFriend />
-        </div>
         <div className="pt-24 text-center text-white">
           <h2 className="text-3xl font-extrabold uppercase tracking-tight sm:text-4xl md:text-5xl">
             How to Order Sacred Products Online

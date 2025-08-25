@@ -66,9 +66,9 @@ export default function Footer() {
   return (
     <footer
       style={{ background: "linear-gradient(180deg, #1A1E26 0%, #01100B 100%)" }}
-      className="text-gray-400 w-full h-auto lg:h-130 mt-5 p-4 sm:p-6 lg:pt-43 pt-20 sm:pt-28"
+      className="text-gray-400 w-full min-h-[400px] mt-5 p-4 sm:p-6 pt-4 relative z-10"
     >
-      <div className="flex flex-col md:flex-row md:justify-evenly gap-8 md:gap-12">
+  <div className="flex flex-col md:flex-row md:justify-evenly gap-8 md:gap-12 mt-27">
         <div className="w-full md:w-1/4">
           <img className="h-10" src="assets/logo.png" alt="VedaStructure Logo" />
           <p className="mt-3 text-sm leading-relaxed">
@@ -82,9 +82,9 @@ export default function Footer() {
 
         <div className="w-full md:w-1/4">
           <FooterHeadings HeadingName="Contact Us" />
-          <p className="text-sm mb-3">care@vedastructure.com</p>
-          <p className="text-sm mb-3 leading-5">Varanasi, Uttar Pradesh 221001</p>
-          <p className="text-sm mb-3">Subscribe to our newsletter</p>
+          <a href="#" className="hover:text-white">care@vedastructure.com</a><br></br>
+          <a href="#" className="hover:text-white">Varanasi, Uttar Pradesh 221001</a><br></br>
+          <a href="#" className="hover:text-white">Subscribe to our newsletter</a>
           <ul className="flex pt-2 gap-3 text-xl">
             <FooterListItem href="#"><FaInstagram /></FooterListItem>
             <FooterListItem href="#"><FaXTwitter /></FooterListItem>
@@ -103,7 +103,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t mt-10 p-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-400 text-center sm:text-left">
+      <div className="border-t mt-1 p-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-400 text-center sm:text-left">
         <p className="text-sm hover:text-white">
           © {new Date().getFullYear()} VedaStructure. All rights reserved.
         </p>

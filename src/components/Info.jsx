@@ -67,12 +67,12 @@ export default function Info() {
     <div className="bg-white py-16 px-4 sm:px-6 lg:px-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-left mb-20">
-          <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-tight ml-4">
+          <h2 className="text-5xl font-extrabold text-gray-900 sm:text-5xl tracking-tight ml-4">
             WHY CHOOSE <span className="text-yellow-500">VEDIC STORE</span><br />
             FOR YOUR SPIRITUAL<br />
             JOURNEY?
           </h2>
-          <p className="mt-4 max-w-2xl text-lg lg:px-5 text-gray-500">
+          <p className="mt-4 max-w-3xl text-lg lg:px-5 text-gray-500">
             We are committed to bringing you authentic, high-quality spiritual products rooted in Vedic traditions. 
             Here are six reasons why seekers around the world trust us to support their spiritual path.
           </p>
