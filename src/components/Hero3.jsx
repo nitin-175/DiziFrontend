@@ -5,7 +5,7 @@ const Hero3 = () => {
   const [isPaused, setIsPaused] = useState(false);
   const scrollRef = useRef(null);
 
-  // Full dataset
+  // Full dataset from Code 2
   const products = [
     {
       id: 1,
@@ -130,7 +130,7 @@ const Hero3 = () => {
     return true;
   });
 
-  // Auto-scrolling (smooth + resets when tab changes)
+  // Auto-scrolling (from Code 1: smoother + resets when tab changes)
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
@@ -173,8 +173,8 @@ const Hero3 = () => {
 
       {/* Products Section */}
       <div className="flex mt-10">
-        {/* Desktop Banner */}
-        <div className="hidden md:flex w-64 bg-orange-500 text-white p-6 rounded-lg flex-col items-center justify-center flex-shrink-0">
+  {/* Desktop Banner */}
+  <div className="hidden md:flex w-64 bg-orange-500 text-white p-6 rounded-lg flex-col items-center justify-center flex-shrink-0">
           <img
             src="/assets/Ek Mukhi Rudraksha Pendant.jpeg"
             alt="Best Seller"
