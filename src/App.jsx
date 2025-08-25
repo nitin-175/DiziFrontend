@@ -13,7 +13,7 @@ import ItemsCategory from './components/ItemsCategory';
 import EducationSection from './components/EducationSection';
 import RecentlyAdded from './components/RecentlyAdded';
 import SpiritualProducts from './components/Hero5';
-
+import Hero3 from './components/Hero3';
 
 
 
@@ -25,7 +25,7 @@ function App() {
 
       <LandingHero />
       <Hero2 />
-
+      <Hero3 />
       
       <SpiritualProducts/>
 
