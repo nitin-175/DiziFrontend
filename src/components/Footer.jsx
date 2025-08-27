@@ -103,7 +103,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t mt-1 p-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-400 text-center sm:text-left">
+      <div className="border-t mt-1 pt-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-400 text-center sm:text-left">
         <p className="text-sm hover:text-white">
           © {new Date().getFullYear()} VedaStructure. All rights reserved.
         </p>
