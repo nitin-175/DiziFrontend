@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import ProductCard from './ProductCard';
+import Navbar from './Navbar';
 
 // --- DATA ---
 const productsData = [
     {
-      id: 1,
+        id: 1,
         category: 'RUDRAKSHA',
         name: '5 Mukhi Rudraksha Mala (108 Beads)',
         rating: 4.6,
@@ -168,18 +169,18 @@ const Pagination = ({ currentPage, totalPages, onPageChange, totalResults, items
                 pages.push(<button key={i} onClick={() => onPageChange(i)} className={`px-3 py-1 rounded-md ${currentPage === i ? 'bg-gray-800 text-white' : 'hover:bg-gray-200'}`}>{i}</button>);
             }
         } else {
-             pages.push(<button key={1} onClick={() => onPageChange(1)} className={`px-3 py-1 rounded-md ${currentPage === 1 ? 'bg-gray-800 text-white' : 'hover:bg-gray-200'}`}>{1}</button>);
-             if (currentPage > 3) pages.push(<span key="start-ellipsis" className="px-3 py-1">...</span>);
-             
-             let startPage = Math.max(2, currentPage - 1);
-             let endPage = Math.min(totalPages - 1, currentPage + 1);
+            pages.push(<button key={1} onClick={() => onPageChange(1)} className={`px-3 py-1 rounded-md ${currentPage === 1 ? 'bg-gray-800 text-white' : 'hover:bg-gray-200'}`}>{1}</button>);
+            if (currentPage > 3) pages.push(<span key="start-ellipsis" className="px-3 py-1">...</span>);
 
-             for (let i = startPage; i <= endPage; i++) {
-                  pages.push(<button key={i} onClick={() => onPageChange(i)} className={`px-3 py-1 rounded-md ${currentPage === i ? 'bg-gray-800 text-white' : 'hover:bg-gray-200'}`}>{i}</button>);
-             }
+            let startPage = Math.max(2, currentPage - 1);
+            let endPage = Math.min(totalPages - 1, currentPage + 1);
 
-             if (currentPage < totalPages - 2) pages.push(<span key="end-ellipsis" className="px-3 py-1">...</span>);
-             pages.push(<button key={totalPages} onClick={() => onPageChange(totalPages)} className={`px-3 py-1 rounded-md ${currentPage === totalPages ? 'bg-gray-800 text-white' : 'hover:bg-gray-200'}`}>{totalPages}</button>);
+            for (let i = startPage; i <= endPage; i++) {
+                pages.push(<button key={i} onClick={() => onPageChange(i)} className={`px-3 py-1 rounded-md ${currentPage === i ? 'bg-gray-800 text-white' : 'hover:bg-gray-200'}`}>{i}</button>);
+            }
+
+            if (currentPage < totalPages - 2) pages.push(<span key="end-ellipsis" className="px-3 py-1">...</span>);
+            pages.push(<button key={totalPages} onClick={() => onPageChange(totalPages)} className={`px-3 py-1 rounded-md ${currentPage === totalPages ? 'bg-gray-800 text-white' : 'hover:bg-gray-200'}`}>{totalPages}</button>);
         }
 
         // Next Arrow
@@ -190,6 +191,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, totalResults, items
 
     return (
         <div className="flex flex-col sm:flex-row items-center justify-between mt-8 text-sm text-gray-600">
+            
             <p className="mb-4 sm:mb-0">
                 Showing {startItem}-{endItem} of {totalResults} results
             </p>
@@ -219,27 +221,33 @@ const ProductGrid2C = () => {
     };
 
     return (
-        <section className="py-6 px-2 flex justify-end w-full">
-            <div className="w-full max-w-4xl">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {currentProducts.map(product => {
-                        // Map 'status' to 'outOfStock' for ProductCard compatibility
-                        const mappedProduct = {
-                            ...product,
-                            outOfStock: product.status === 'outOfStock',
-                        };
-                        return <ProductCard key={product.id} product={mappedProduct} />;
-                    })}
+        <div>
+            
+
+
+            <section className="py-6 px-2 flex justify-end w-full">
+                <div className="w-full max-w-4xl">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {currentProducts.map(product => {
+                            // Map 'status' to 'outOfStock' for ProductCard compatibility
+                            const mappedProduct = {
+                                ...product,
+                                outOfStock: product.status === 'outOfStock',
+                            };
+                            return <ProductCard key={product.id} product={mappedProduct} />;
+                        })}
+                    </div>
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={handlePageChange}
+                        totalResults={productsData.length}
+                        itemsPerPage={ITEMS_PER_PAGE}
+                    />
                 </div>
-                <Pagination 
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={handlePageChange}
-                    totalResults={productsData.length}
-                    itemsPerPage={ITEMS_PER_PAGE}
-                />
-            </div>
-        </section>
+            </section>
+        </div>
+
     );
 };
 
