@@ -30,23 +30,36 @@ const gemstones = [
 export default function GemstoneCategory() {
   const [selectedRating, setSelectedRating] = useState(0);
   const [maxPrice, setMaxPrice] = useState(20000);
+  const [showFilters, setShowFilters] = useState(false);
 
   const filteredGemstones = gemstones.filter(
     (gem) => gem.rating >= selectedRating && gem.price <= maxPrice
   );
 
   return (
-    <section className=" mx-auto  bg-gradient-to-b from-yellow-100 via-purple-50 to-orange-50">
+    <section className="bg-gradient-to-b from-yellow-100 via-purple-50 to-orange-50 min-h-screen">
+      <Navbar />
 
-    <Navbar/>
-
-
-      <h2 className="text-3xl font-bold text-center mb-10 mt-10 text-yellow-600">
+      {/* Heading */}
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 mt-10 text-yellow-700">
         Spiritual Gemstones Collection
       </h2>
-      <div className="flex flex-col lg:flex-row gap-8">
+
+      <div className="flex flex-col lg:flex-row gap-8 px-4 md:px-8">
+        {/* Filter Toggle (Mobile Only) */}
+        <button
+          className="lg:hidden bg-purple-600 text-white px-4 py-2 rounded-lg shadow-md mb-4"
+          onClick={() => setShowFilters(!showFilters)}
+        >
+          {showFilters ? "Hide Filters" : "Show Filters"}
+        </button>
+
         {/* Filters */}
-        <div className="lg:w-1/3 pl-8 mb-15  h-auto bg-gradient-to-b from-purple-100 via-yellow-50 to-orange-100 p-5 rounded-3xl shadow-lg border border-yellow-200">
+        <div
+          className={`${
+            showFilters ? "block" : "hidden"
+          } lg:block lg:w-1/4 bg-gradient-to-b from-purple-100 via-yellow-50 to-orange-100 p-5 rounded-2xl shadow-lg border border-yellow-200`}
+        >
           <h3 className="text-xl font-semibold text-purple-800 mb-4">Filters</h3>
 
           <div className="mb-6">
@@ -72,71 +85,92 @@ export default function GemstoneCategory() {
               step="500"
               value={maxPrice}
               onChange={(e) => setMaxPrice(Number(e.target.value))}
-              className="w-full"
+              className="w-full accent-yellow-600"
             />
             <p className="text-purple-800 mt-2">Up to ₹{maxPrice}</p>
           </div>
         </div>
 
         {/* Products */}
-        <div className="w-full lg:w-4/5 grid grid-cols-1 pr-8 mb-15 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
-          {filteredGemstones.map((gem) => (
-            <div
-              key={gem.id}
-              className="bg-white rounded-3xl shadow-xl overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl border-2 border-yellow-200"
-            >
-              <img
-                src={gem.image}
-                alt={gem.name}
-                className="w-full h-40 object-contain"
-              />
-              <div className="p-5 ">
-                <h3 className="text-xl font-semibold text-purple-800 mb-2">{gem.name}</h3>
-                <p className="text-gray-600 text-sm mb-3">{gem.description}</p>
-                <div className="flex items-center justify-between mb-4">
-                  <p className="text-yellow-800 font-bold text-lg">₹{gem.price}</p>
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: 5 }, (_, index) =>
-                      index < gem.rating ? (
-                        <FaStar key={index} className="text-yellow-500" />
-                      ) : (
-                        <FaRegStar key={index} className="text-yellow-300" />
-                      )
-                    )}
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <button className="flex-1 bg-yellow-600 text-white py-2 rounded-lg hover:bg-yellow-700 shadow-md transition-all">
-                    Buy Now
-                  </button>
-                  <button className="flex-1  text-black border-1 py-2 rounded-lg hover:bg-yellow-200 shadow-md transition-all">
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-          {filteredGemstones.length === 0 && (
-            <p className="text-purple-800 text-center col-span-full">No products match the selected filters.</p>
-          )}
+        <div className="w-full lg:w-4/5 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+  {filteredGemstones.map((gem) => (
+    <div
+      key={gem.id}
+      className="bg-white rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl border border-yellow-200"
+    >
+      {/* Product Image */}
+      <img
+        src={gem.image}
+        alt={gem.name}
+        className="w-full h-28 sm:h-36 lg:h-48 object-contain p-2"
+      />
+
+      {/* Product Info */}
+      <div className="p-3 sm:p-4 lg:p-6">
+        <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-purple-800 mb-1 lg:mb-2">
+          {gem.name}
+        </h3>
+
+        <p className="text-gray-600 text-xs sm:text-sm lg:text-base mb-2 lg:mb-3 line-clamp-2 lg:line-clamp-3">
+          {gem.description}
+        </p>
+
+        {/* Price + Rating */}
+        <div className="flex items-center justify-between mb-3 lg:mb-4">
+          <p className="text-yellow-800 font-bold text-sm sm:text-base lg:text-lg">
+            ₹{gem.price}
+          </p>
+          <div className="flex items-center gap-0.5">
+            {Array.from({ length: 5 }, (_, index) =>
+              index < gem.rating ? (
+                <FaStar
+                  key={index}
+                  className="text-yellow-500 text-xs sm:text-sm lg:text-base"
+                />
+              ) : (
+                <FaRegStar
+                  key={index}
+                  className="text-yellow-300 text-xs sm:text-sm lg:text-base"
+                />
+              )
+            )}
+          </div>
+        </div>
+
+        {/* Buttons */}
+        {/* Mobile: Only Buy Now */}
+        <button className="w-full bg-yellow-600 text-white py-2 lg:py-3 rounded-lg hover:bg-yellow-700 shadow-md transition-all text-sm sm:text-base lg:hidden">
+          Buy Now
+        </button>
+
+        {/* Desktop: Buy Now + Add to Cart */}
+        <div className="hidden lg:flex gap-3">
+          <button className="flex-1 bg-yellow-600 text-white py-3 rounded-lg hover:bg-yellow-700 shadow-md transition-all text-lg">
+            Buy Now
+          </button>
+          <button className="flex-1 border border-yellow-500 text-yellow-700 py-3 rounded-lg hover:bg-yellow-100 shadow-md transition-all text-lg">
+            Add to Cart
+          </button>
         </div>
       </div>
+    </div>
+  ))}
+
+  {/* No Products Case */}
+  {filteredGemstones.length === 0 && (
+    <p className="text-purple-800 text-center col-span-full">
+      No products match the selected filters.
+    </p>
+  )}
+</div>
 
 
 
 
+      </div>
 
-
-
-
-
-
-
-
-
-
-    <CouponSection/>
-      <Footer/>
+      <CouponSection />
+      <Footer />
     </section>
   );
 }

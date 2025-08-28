@@ -17,11 +17,11 @@ function App() {
           <Route path="/category" element={<Category />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/contact" element={<ContactSection />} />
-          <Route path="/category/gemstones" element={<GemstoneCategory/>} />
-        </Routes>
+          <Route path="/category/gemstones" element={<GemstoneCategory/>} />  
+        </Routes>  
       </Router>
 
-      
+     
 
     </CartProvider>
 
