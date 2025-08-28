@@ -32,36 +32,40 @@ export default function ItemsCategory() {
   ];
 
   return (
-    <div className="flex flex-wrap justify-center gap-6 p-6">
-      {categories.map((item, index) => (
-        <div
-          key={index}
-          className="max-w-sm w-80 border rounded-2xl shadow-md overflow-hidden flex flex-col hover:shadow-2xl hover:-translate-y-3 transition-transform duration-300"
-        >
-          
+    <div className="max-w-7xl mx-auto px-6 py-10">
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {categories.map((item, index) => (
+          <div
+            key={index}
+            className="bg-white border rounded-2xl shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-2 transition-transform duration-300"
+          >
+            {/* Image */}
+            <div className="overflow-hidden">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-56 sm:h-64 md:h-72 object-cover transform hover:scale-105 transition duration-500"
+              />
+            </div>
 
-          <div className="overflow-hidden">
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full h-72 object-cover transform hover:scale-105 hover:brightness-110 transition duration-500"
-            />
+            {/* Content */}
+            <div className="p-5 flex flex-col flex-grow">
+              <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-800">
+                {item.title}
+              </h2>
+              <p className="text-gray-600 text-sm md:text-base flex-grow">
+                {item.description}
+              </p>
+              <a
+                href={item.href}
+                className="mt-4 text-green-600 font-medium hover:underline self-start"
+              >
+                {item.link}
+              </a>
+            </div>
           </div>
-
-          
-          
-          <div className="p-4 flex flex-col flex-grow">
-            <h2 className="text-xl font-bold mb-2">{item.title}</h2>
-            <p className="text-gray-600 text-sm flex-grow">{item.description}</p>
-            <a
-              href={item.href}
-              className="mt-4 text-green-600 font-medium hover:underline"
-            >
-              {item.link}
-            </a>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

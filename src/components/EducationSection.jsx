@@ -18,13 +18,14 @@ function ArticleCard({ date, title, description, image, link }) {
         <img
           src={image}
           alt={title}
-          className="w-full h-72 object-cover transition-transform duration-700 ease-in-out transform hover:scale-110 hover:rotate-1"
+          className="w-full h-72 sm:h-64 object-cover transition-transform duration-700 ease-in-out transform hover:scale-110 hover:rotate-1"
         />
       </div>
       <div className="p-5 flex flex-col flex-1">
         <p className="text-gray-400 text-sm">{date}</p>
         <h3 className="text-lg font-semibold text-gray-800 mt-2">{title}</h3>
-        <p className="text-gray-600 text-sm mt-3 flex-1">{description}</p>
+        {/* Description hidden on small screens */}
+        <p className="text-gray-600 text-sm mt-3 flex-1 hidden sm:block">{description}</p>
         <a
           href={link}
           className="text-yellow-600 font-semibold hover:underline mt-4"
@@ -71,7 +72,7 @@ export default function EducationSection() {
     <section className="px-6 py-12 bg-gray-50">
       <div className="max-w-6xl mx-auto">
         <SectionHeader />
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
           {articles.map((item, index) => (
             <ArticleCard key={index} {...item} />
           ))}
