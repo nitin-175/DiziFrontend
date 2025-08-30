@@ -91,7 +91,7 @@ const newArrivals = [...astrologicalStones].reverse(); // Just re-using for demo
 // --- REUSABLE COMPONENTS ---
 
 const ProductCard = ({ gem }) => (
-    <div className="bg-white ml-7 mr-7 rounded-lg overflow-hidden group text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col">
+    <div className="bg-white rounded-lg overflow-hidden group text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col">
         <div className="relative bg-gray-50 p-4 flex justify-center items-center">
             <img
                 src={gem.image}
@@ -118,7 +118,7 @@ const ProductCard = ({ gem }) => (
 
 
 const CategoryCard = ({ category }) => (
-    <div className="text-center group ml-7 mr-7">
+    <div className="text-center group ">
         <div className="rounded-lg overflow-hidden p-1 transition-all duration-300 group-hover:shadow-[0_0_25px_rgba(250,204,21,0.5),0_0_50px_rgba(250,204,21,0.3),0_0_100px_rgba(250,204,21,0.2)]">
             <img src={category.image} alt={category.name} className="w-full h-auto object-contain rounded-md transition-transform duration-300 group-hover:scale-110" />
         </div>
@@ -148,43 +148,50 @@ const SimpleProductCard = ({ gem }) => (
 
 
 const HeroSection = () => (
-    <div className="relative h-80 md:h-[500px] overflow-hidden">
-        {/* Background Video */}
-        <video
-            className="absolute inset-0 w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-        >
-            <source src="/assets/bgvideo.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-        </video>
+  <div className="relative h-72 sm:h-96 md:h-[500px] lg:h-[550px] overflow-hidden">
+    {/* Background Video */}
+    <video
+      className="absolute inset-0 w-full h-full object-cover"
+      autoPlay
+      muted
+      loop
+      playsInline
+    >
+      <source src="/assets/bgvideo.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
 
-        {/* Overlay (dark gradient for readability) */}
-        <div className="absolute inset-0"></div>
+    {/* Overlay (dark gradient for readability) */}
+    <div className="absolute inset-0 bg-black/20 sm:bg-black/30 md:bg-black/40"></div>
 
-        {/* Content */}
-        <div className="absolute inset-0 flex items-center justify-start text-left">
-            <div className="p-8 md:p-12 rounded-lg">
-                <h1 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight drop-shadow-lg">
-                    Authentic, Precious & <br /> Semi-Precious Gemstones
-                </h1>
-                <p className="text-gray-200 mt-4 max-w-2xl drop-shadow-md">
-                    Discover a curated collection of the world's finest, ethically sourced gems, certified for authenticity.
-                </p>
-                <div className="mt-8 flex space-x-4">
-                    <a href="#" className="px-8 py-3 bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition-all duration-300 transform hover:scale-105">
-                        Shop Gemstones
-                    </a>
-                    <a href="#" className="px-8 py-3 bg-white/20 text-white font-bold rounded-full hover:bg-white/30 transition-all duration-300 transform hover:scale-105">
-                        Astrology Consultation
-                    </a>
-                </div>
-            </div>
+    {/* Content */}
+    <div className="absolute inset-0 flex items-center justify-start text-left">
+      <div className="p-4 sm:p-8 md:p-12 lg:p-16 max-w-3xl">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white leading-snug sm:leading-normal md:leading-tight drop-shadow-lg">
+          Authentic, Precious & <br /> Semi-Precious Gemstones
+        </h1>
+        <p className="text-gray-200 mt-3 sm:mt-4 text-sm sm:text-base md:text-lg drop-shadow-md max-w-xl">
+          Discover a curated collection of the world's finest, ethically sourced gems, certified for authenticity.
+        </p>
+        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+          <a
+            href="#"
+            className="px-6 py-2 sm:px-8 sm:py-3 bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition-all duration-300 transform hover:scale-105 text-sm sm:text-base md:text-lg text-center"
+          >
+            Shop Gemstones
+          </a>
+          <a
+            href="#"
+            className="px-6 py-2 sm:px-8 sm:py-3 bg-white/20 text-white font-bold rounded-full hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-sm sm:text-base md:text-lg text-center"
+          >
+            Astrology Consultation
+          </a>
         </div>
+      </div>
     </div>
+  </div>
 );
+
 
 
 
