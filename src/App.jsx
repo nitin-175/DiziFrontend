@@ -5,8 +5,8 @@ import Category from "./pages/Category";
 import Cart from "./pages/Cart";
 import { CartProvider } from "./context/CartContext";
 import ContactSection from "./components/ContactSection";
-import GemstoneCategory from "./components/GemstoneCategory";
-
+import GemstoneCategory from "./pages/GemstoneCategory";
+import GemDescription from "./pages/GemDescription";
 function App() {
   return (
     <CartProvider>
@@ -17,17 +17,11 @@ function App() {
           <Route path="/category" element={<Category />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/contact" element={<ContactSection />} />
-          <Route path="/category/gemstones" element={<GemstoneCategory/>} />  
+          <Route path="/category/gemstones" element={<GemstoneCategory/>} />
+          <Route path="/gem/:id" element={<GemDescription />} />
         </Routes>  
       </Router>
-
-     
-
     </CartProvider>
-
-
-
-    
   );
 }
 
