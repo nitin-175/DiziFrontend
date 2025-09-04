@@ -91,13 +91,13 @@ const newArrivals = [...astrologicalStones].reverse(); // Just re-using for demo
 // --- REUSABLE COMPONENTS ---
 
 const ProductCard = ({ gem }) => (
-    <div className="bg-white rounded-lg overflow-hidden group text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col mx-2 md:mx-4 w-auto">
+    <div className="bg-white rounded-lg overflow-hidden group text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col w-full">
         {/* Image */}
-        <div className="relative bg-gray-50 p-4 flex justify-center items-center h-auto sm:h-48">
+        <div className="relative bg-gray-50 p-4 flex justify-center items-center aspect-square">
             <img
                 src={gem.image}
                 alt={gem.name}
-                className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                className="w-28 sm:w-32 md:w-36 h-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
         </div>
 
@@ -130,6 +130,7 @@ const ProductCard = ({ gem }) => (
 
 
 
+
 const CategoryCard = ({ category }) => (
     <div className="text-center group max-w-[140px] sm:max-w-[160px] md:max-w-[180px] mx-auto overflow-hidden">
         <div className="rounded-xl overflow-hidden p-2 bg-white transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(250,204,21,0.4),0_0_40px_rgba(250,204,21,0.25),0_0_80px_rgba(250,204,21,0.15)]">
@@ -152,19 +153,27 @@ const CategoryCard = ({ category }) => (
 
 
 const SimpleProductCard = ({ gem }) => (
-  <div className="text-center group mx-4 sm:mx-6 md:mx-7 transition-transform duration-300 hover:scale-105">
-    <div className="rounded-lg overflow-hidden p-1 ">
-      <img
-        src={gem.image}
-        alt={gem.name}
-        className="w-auto h-auto object-contain aspect-square rounded-md transition-transform duration-300 group-hover:scale-105"
-      />
+    <div className="text-center group mx-2 sm:mx-3 md:mx-4 transition-transform duration-300 hover:scale-110">
+        <div className="relative">
+            <div className="absolute inset-0 rounded-full blur-3xl bg-gradient-to-tr from-yellow-400 to-pink-500 opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+            <img
+                src={gem.image}
+                alt={gem.name}
+                className="relative w-32 sm:w-36 md:w-40 h-auto object-contain mx-auto drop-shadow-[0_10px_20px_rgba(255,255,255,0.4)] transition-transform duration-300 group-hover:scale-110"
+            />
+        </div>
+        <h3 className="mt-2 sm:mt-3 text-sm sm:text-base md:text-lg font-medium transition-colors duration-300 group-hover:text-yellow-600 min-h-[36px] flex items-center justify-center text-center">
+            {gem.name}
+        </h3>
     </div>
-    <h3 className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl font-bold font-sans transition-all duration-300 group-hover:text-yellow-600 group-hover:text-2xl min-h-[48px] flex items-center justify-center text-center">
-      {gem.name}
-    </h3>
-  </div>
 );
+
+
+
+
+
+
+
 
 
 
@@ -267,68 +276,81 @@ export default function GemstoneCategory() {
 
                     {/* New Arrivals Section */}
                     <section className="py-16">
-                        <div className="container mx-auto px-4">
+                        <div className="container mx-auto px-14">
                             <h2 className="text-3xl font-serif font-bold text-center text-black mb-12">
                                 New Arrivals
                             </h2>
-                            <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                                 {newArrivals.slice(0, 5).map((gem) => (
                                     <ProductCard key={gem.id} gem={gem} />
                                 ))}
                             </div>
+
                         </div>
                     </section>
+
+
+
 
 
 
 
                     {/* Astrological Gemstones Section */}
                     <section className="relative py-16 px-4  md:mx-19 lg:px-8">
-  <div className="relative z-20 container mx-auto text-black">
-    <h2 className="text-4xl font-serif font-bold text-center mb-12">
-      Astrological Gemstones
-    </h2>
-    <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 text-grey-800">
-      {astrologicalStones.map((gem) => (
-        <SimpleProductCard key={gem.id} gem={gem} />
-      ))}
-    </div>
-  </div>
-</section>
+                        <div className="relative z-20 container mx-auto text-black">
+                            <h2 className="text-4xl font-serif font-bold text-center mb-12">
+                                Astrological Gemstones
+                            </h2>
+                            <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 text-grey-800">
+                                {astrologicalStones.map((gem) => (
+                                    <SimpleProductCard key={gem.id} gem={gem} />
+                                ))}
+                            </div>
+                        </div>
+                    </section>
 
 
 
                     {/* Featured Gemstones Section */}
 
                     {/* Featured Gemstones Section with Background Video */}
-                    <section className="relative py-16">
-                        {/* Background Video */}
-                        <video
-                            className="absolute inset-0 w-full h-full object-cover"
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                        >
-                            <source src="/assets/bgvideo2.mp4" type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
+                    <section className="relative py-16 bg-black md:bg-transparent">
+  {/* Background Video for md and above */}
+  <video
+    className="hidden md:block absolute inset-0 w-full h-full object-cover"
+    autoPlay
+    loop
+    muted
+    playsInline
+  >
+    <source src="/assets/bgvideo2.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
 
-                        {/* Overlay for readability */}
-                        <div className="absolute inset-0 bg-black/60"></div>
+  {/* Overlay for readability on md and above */}
+  <div className="hidden md:block absolute inset-0 bg-black/50"></div>
 
-                        {/* Content */}
-                        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-white">
-                            <h2 className="text-4xl font-serif font-bold text-center text-white mb-12">
-                                Featured Gemstones
-                            </h2>
-                            <div className="grid grid-cols-5 sm:grid-cols-5 gap-8 text-white">
-                                {astrologicalStones.slice(0, 5).map((gem) => (
-                                    <SimpleProductCard key={gem.id} gem={gem} />
-                                ))}
-                            </div>
-                        </div>
-                    </section>
+  {/* Content */}
+  <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-white md:text-white">
+    <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-center mb-8 sm:mb-12">
+      Featured Gemstones
+    </h2>
+
+    {/* Flex grid: vertical on mobile, horizontal on md+ */}
+    <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 w-full">
+      {astrologicalStones.slice(0, 3).map((gem) => (
+        <div key={gem.id} className="w-full md:w-auto flex justify-center">
+          <SimpleProductCard
+            gem={gem}
+            className="w-3/4 sm:w-2/3 md:w-auto"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
 
 
                 </main>
