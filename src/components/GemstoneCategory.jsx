@@ -275,19 +275,27 @@ export default function GemstoneCategory() {
 
 
                     {/* New Arrivals Section */}
-                    <section className="py-16">
-                        <div className="container mx-auto px-14">
-                            <h2 className="text-3xl font-serif font-bold text-center text-black mb-12">
-                                New Arrivals
-                            </h2>
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                                {newArrivals.slice(0, 5).map((gem) => (
-                                    <ProductCard key={gem.id} gem={gem} />
-                                ))}
-                            </div>
+                    <section
+  className="py-16 bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: "url('/assets/bg.png')" }}
+>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-center text-black mb-8 sm:mb-12">
+      New Arrivals
+    </h2>
 
-                        </div>
-                    </section>
+    {/* Flexbox row that wraps only if needed */}
+    <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8">
+      {newArrivals.slice(0, 5).map((gem) => (
+        <div className="flex-shrink-0 w-40 sm:w-44 md:w-48 lg:w-52 xl:w-56">
+          <ProductCard key={gem.id} gem={gem} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
 
 
 
