@@ -19,6 +19,7 @@ function App() {
           <Route path="/contact" element={<ContactSection />} />
           <Route path="/category/gemstones" element={<GemstoneCategory/>} />
           <Route path="/gem/:id" element={<GemDescription />} />
+          
         </Routes>  
       </Router>
     </CartProvider>
