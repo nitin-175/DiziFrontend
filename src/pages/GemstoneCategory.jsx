@@ -1,9 +1,7 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
-// --- SVG ICONS ---
-// Using inline SVGs to keep everything in one file and avoid external dependencies.
 
 const PhoneIcon = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -80,52 +78,37 @@ const newArrivals = [...astrologicalStones].reverse(); // Just re-using for demo
 
 
 
+import { useNavigate } from 'react-router-dom';
 
-
-
-
-
-
-
-
-// --- REUSABLE COMPONENTS ---
-
-const ProductCard = ({ gem }) => (
-    <div className="bg-white rounded-lg overflow-hidden group text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col w-full">
-        {/* Image */}
-        <div className="relative bg-gray-50 p-4 flex justify-center items-center aspect-square">
-            <img
-                src={gem.image}
-                alt={gem.name}
-                className="w-28 sm:w-32 md:w-36 h-auto object-contain transition-transform duration-300 group-hover:scale-105"
-            />
-        </div>
-
-        {/* Content */}
-        <div className="p-4 flex flex-col flex-grow">
-            <div className="flex-grow">
-                <h3 className="text-base sm:text-lg font-sans text-gray-800 group-hover:text-yellow-600 min-h-[48px] flex items-center justify-center text-center">
-                    {gem.name}
-                </h3>
-                <p className="text-gray-500 text-sm mt-1">{gem.carat} Ratti</p>
-                <p className="text-lg sm:text-xl font-bold font-sans text-gray-900 mt-2">
-                    ${gem.price}
-                </p>
+function ProductCard({ gem }) {
+    const navigate = useNavigate();
+    return (
+        <div className="bg-white rounded-lg overflow-hidden group text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col w-full">
+            {/* Image */}
+            <div className="relative bg-gray-50 p-4 flex justify-center items-center aspect-square cursor-pointer" onClick={() => navigate(`/gem/${gem.id}`)}>
+                <img
+                    src={gem.image}
+                    alt={gem.name}
+                    className="w-28 sm:w-32 md:w-36 h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                />
             </div>
 
-            {/* CTA */}
-            <button
-                className="
-          w-full mt-3 bg-yellow-50 text-yellow-700 font-semibold py-2.5 rounded-md text-sm
-          opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0
-          transition-all duration-300 hover:bg-yellow-400 hover:text-black
-        "
-            >
-                View Details
-            </button>
+            {/* Content */}
+            <div className="p-4 flex flex-col flex-grow">
+                <div className="flex-grow">
+                    <h3 className="text-base sm:text-lg font-sans text-gray-800 group-hover:text-yellow-600 min-h-[48px] flex items-center justify-center text-center">
+                        {gem.name}
+                    </h3>
+                    <p className="text-gray-500 text-sm mt-1">{gem.carat} Ratti</p>
+                    <p className="text-lg sm:text-xl font-bold font-sans text-gray-900 mt-2">
+                        ${gem.price}
+                    </p>
+                </div>
+                {/* No CTA button */}
+            </div>
         </div>
-    </div>
-);
+    );
+}
 
 
 
@@ -152,21 +135,24 @@ const CategoryCard = ({ category }) => (
 
 
 
-const SimpleProductCard = ({ gem }) => (
-    <div className="text-center group mx-2 sm:mx-3 md:mx-4 transition-transform duration-300 hover:scale-110">
-        <div className="relative">
-            <div className="absolute inset-0 rounded-full blur-3xl bg-gradient-to-tr from-yellow-400 to-pink-500 opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
-            <img
-                src={gem.image}
-                alt={gem.name}
-                className="relative w-32 sm:w-36 md:w-40 h-auto object-contain mx-auto drop-shadow-[0_10px_20px_rgba(255,255,255,0.4)] transition-transform duration-300 group-hover:scale-110"
-            />
+function SimpleProductCard({ gem }) {
+    const navigate = useNavigate();
+    return (
+        <div className="text-center group mx-2 sm:mx-3 md:mx-4 transition-transform duration-300 hover:scale-110">
+            <div className="relative cursor-pointer" onClick={() => navigate(`/gem/${gem.id}`)}>
+                <div className="absolute inset-0 rounded-full blur-3xl bg-gradient-to-tr from-yellow-400 to-pink-500 opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+                <img
+                    src={gem.image}
+                    alt={gem.name}
+                    className="relative w-32 sm:w-36 md:w-40 h-auto object-contain mx-auto drop-shadow-[0_10px_20px_rgba(255,255,255,0.4)] transition-transform duration-300 group-hover:scale-110"
+                />
+            </div>
+            <h3 className="mt-2 sm:mt-3 text-sm sm:text-base md:text-lg font-medium transition-colors duration-300 group-hover:text-yellow-600 min-h-[36px] flex items-center justify-center text-center">
+                {gem.name}
+            </h3>
         </div>
-        <h3 className="mt-2 sm:mt-3 text-sm sm:text-base md:text-lg font-medium transition-colors duration-300 group-hover:text-yellow-600 min-h-[36px] flex items-center justify-center text-center">
-            {gem.name}
-        </h3>
-    </div>
-);
+    );
+}
 
 
 
