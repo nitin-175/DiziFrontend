@@ -1,114 +1,65 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
-const astrologicalStones = [
-	{ id: 1, name: 'Natural Pearl', price: '1,150', carat: '5.25', image: '/assets/gemstones/img2.avif', description: 'A beautiful natural pearl for prosperity.', images: ['/assets/gemstones/img2.avif'], poojaOptions: ['Basic', 'Premium'] },
-	{ id: 2, name: 'Red Coral', price: '850', carat: '6.0', image: '/assets/gemstones/img3.avif', description: 'Red Coral for strength and courage.', images: ['/assets/gemstones/img3.avif'], poojaOptions: ['Basic', 'Premium'] },
-	// ...add more stones as needed
+// Gemstone data from GemstoneCategory.jsx
+const gemstones = [
+	{ id: 1, name: 'Natural Pearl', price: 1150, carat: '5.25', image: '/assets/gemstones/img2.avif', description: 'A symbol of purity and wisdom, perfect for astrological benefits and jewelry.', highlights: ['Certified Natural Pearl', 'Ideal for Moon sign', 'Premium luster', 'Astrological benefits'], stock: 12 },
+	{ id: 2, name: 'Red Coral', price: 850, carat: '6.0', image: '/assets/gemstones/img3.avif', description: 'Red Coral is known for its vibrant color and astrological significance for Mars.', highlights: ['Premium Italian Coral', 'Astrological use', 'Rich color', 'Certified origin'], stock: 7 },
+	{ id: 3, name: 'Hessonite', price: 950, carat: '4.5', image: '/assets/gemstones/img4.avif', description: 'Hessonite garnet, also called Gomed, is worn for Rahu and brings clarity.', highlights: ['Natural Hessonite', 'Astrological remedy for Rahu', 'Rich honey color', 'Lab certified'], stock: 5 },
+	{ id: 4, name: 'Cat\'s Eye', price: 1300, carat: '3.75', image: '/assets/gemstones/img5.avif', description: 'Cat’s Eye is worn for Ketu and is believed to bring protection and insight.', highlights: ['Natural Cat’s Eye', 'Astrological use for Ketu', 'Distinct chatoyancy', 'Certified stone'], stock: 3 },
+	{ id: 5, name: 'Amethyst', price: 450, carat: '7.0', image: '/assets/gemstones/img6.avif', description: 'Amethyst is a calming stone, ideal for meditation and spiritual growth.', highlights: ['Natural Amethyst', 'Deep purple color', 'Calming energy', 'Astrological benefits'], stock: 10 },
+	// ...add more as needed
 ];
 
-const GemDescription = () => {
-	const { id } = useParams();
-	const product = astrologicalStones.find(gem => gem.id === Number(id));
-	const [selectedImage, setSelectedImage] = useState(product?.images?.[0] || product?.image || '');
-	const [quantity, setQuantity] = useState(1);
 
-	if (!product) {
-		return <div className="container mx-auto p-8 text-center text-xl text-red-600">Product not found.</div>;
+export default function GemDescription() {
+	const { id } = useParams();
+	const gem = gemstones.find(g => g.id === Number(id));
+
+	if (!gem) {
+		return <div className="p-8 text-center text-red-600 text-xl">Gemstone not found.</div>;
 	}
 
-	const handleImageClick = (image) => {
-		setSelectedImage(image);
-	};
-
-	const handleQuantityChange = (type) => {
-		if (type === 'increment') {
-			setQuantity(quantity + 1);
-		} else if (type === 'decrement' && quantity > 1) {
-			setQuantity(quantity - 1);
-		}
-	};
-
 	return (
-		<div className="container mx-auto p-4 flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8">
-			{/* Product Image Gallery */}
-			<div className="w-full lg:w-1/2 flex flex-col-reverse lg:flex-row-reverse lg:space-x-reverse space-x-0 lg:space-x-4">
-				<div className="flex flex-row lg:flex-col space-x-2 lg:space-x-0 lg:space-y-2 overflow-x-auto lg:overflow-y-auto w-full lg:w-auto mt-4 lg:mt-0">
-					{product.images.map((image, index) => (
-						<div
-							key={index}
-							className={`w-20 h-20 flex-shrink-0 cursor-pointer border-2 ${selectedImage === image ? 'border-blue-500' : 'border-gray-300'}`}
-							onClick={() => handleImageClick(image)}
-						>
-							<img src={image} alt={`Thumbnail ${index + 1}`} className="w-full h-full object-cover" />
-						</div>
-					))}
-				</div>
-				<div className="flex-grow relative">
-					<img src={selectedImage} alt={product.name} className="w-full h-auto object-contain rounded-lg shadow-lg" />
+		<div className="container mx-auto p-4 md:p-8 flex flex-col md:flex-row gap-8">
+			{/* Image Section */}
+			<div className="flex-1 flex flex-col items-center md:items-start">
+				<img src={gem.image} alt={gem.name} className="w-64 h-64 object-contain rounded-lg shadow-lg mb-4" />
+				<div className="flex gap-2 mt-2">
+					<span className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold">In Stock</span>
+					<span className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs font-semibold">Fast Delivery</span>
 				</div>
 			</div>
 
-			{/* Product Details */}
-			<div className="w-full lg:w-1/2 p-4 bg-white rounded-lg shadow-lg">
-				<div className="flex justify-between items-start mb-4">
-					<h1 className="text-3xl font-bold text-gray-800">{product.name}</h1>
+			{/* Details & Buy Box */}
+			<div className="flex-1 flex flex-col gap-4">
+				<h1 className="text-3xl font-bold text-gray-900">{gem.name}</h1>
+				<div className="flex items-center gap-2 text-yellow-500 text-lg">
+					<span>★ 4.7</span>
+					<span className="text-gray-500 text-base">(210 ratings)</span>
 				</div>
-
-				<div className="mb-6">
-					<span className="text-4xl font-extrabold text-green-600">₹{product.price}</span>
+				<div className="text-lg text-gray-700">{gem.carat} Ratti</div>
+				<div className="text-2xl font-bold text-green-700">₹{gem.price.toLocaleString()}</div>
+				<div className="text-sm text-gray-500">Inclusive of all taxes</div>
+				<div className="mt-2">
+					<span className="font-semibold">Description: </span>
+					<span>{gem.description}</span>
 				</div>
+				<ul className="list-disc pl-5 mt-2 text-gray-700">
+					{gem.highlights.map((h, i) => <li key={i}>{h}</li>)}
+				</ul>
 
-				<div className="mb-6">
-					<label htmlFor="pooja" className="block text-gray-700 text-sm font-bold mb-2">
-						POOJA/ENERGIZATION <span className="text-red-500">*</span>
-					</label>
-					<select
-						id="pooja"
-						className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-					>
-						<option value="">--choose--</option>
-						{product.poojaOptions.map((option, index) => (
-							<option key={index} value={option}>{option}</option>
-						))}
-					</select>
-				</div>
-
-				<div className="flex items-center space-x-4 mb-8">
-					<div className="flex items-center border border-gray-300 rounded-md">
-						<button
-							onClick={() => handleQuantityChange('decrement')}
-							className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-l-md"
-						>
-							-
-						</button>
-						<span className="px-4 py-2 border-l border-r border-gray-300">{quantity}</span>
-						<button
-							onClick={() => handleQuantityChange('increment')}
-							className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-r-md"
-						>
-							+
-						</button>
-					</div>
-					<button className="flex-grow bg-white border border-green-600 text-green-600 py-3 px-6 rounded-md hover:bg-green-50 focus:outline-none focus:shadow-outline flex items-center justify-center">
-						<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-						</svg>
-						Add to Cart
-					</button>
-				</div>
-
-				<button className="w-full bg-orange-500 text-white py-3 px-6 rounded-md hover:bg-orange-600 focus:outline-none focus:shadow-outline text-lg font-semibold">
-					Buy Now
-				</button>
-
-				<div className="mt-8 text-gray-700 leading-relaxed">
-					<p>{product.description}</p>
+				{/* Buy Box */}
+				<div className="border rounded-lg p-4 mt-4 bg-gray-50 shadow-sm w-full max-w-xs">
+					<div className="text-xl font-bold text-green-700 mb-2">₹{gem.price.toLocaleString()}</div>
+					<div className="text-sm text-gray-600 mb-2">FREE delivery: <span className="font-semibold text-black">Tomorrow</span></div>
+					<div className="text-sm text-gray-600 mb-4">Sold by <span className="font-semibold text-black">Dizi Gems</span></div>
+					<button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 rounded mb-2 transition">Add to Cart</button>
+					<button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 rounded transition">Buy Now</button>
+					<div className="text-xs text-gray-500 mt-2">Secure transaction • 7-day return policy</div>
 				</div>
 			</div>
 		</div>
 	);
-};
-
-export default GemDescription;
+}

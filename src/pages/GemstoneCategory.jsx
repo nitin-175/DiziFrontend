@@ -1,8 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-
 
 
 const PhoneIcon = ({ className }) => (
@@ -78,26 +76,9 @@ const astrologicalStones = [
 
 const newArrivals = [...astrologicalStones].reverse(); // Just re-using for demo
 
-// --- REUSABLE COMPONENTS ---
-function CategoryCard({ category }) {
-    return (
-        <div className="text-center group max-w-[140px] sm:max-w-[160px] md:max-w-[180px] mx-auto overflow-hidden">
-            <div className="rounded-xl overflow-hidden p-2 bg-white transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(250,204,21,0.4),0_0_40px_rgba(250,204,21,0.25),0_0_80px_rgba(250,204,21,0.15)]">
-                {/* Fixed image container */}
-                <div className="w-full h-24 sm:h-28 md:h-32 flex items-center justify-center">
-                    <img
-                        src={category.image}
-                        alt={category.name}
-                        className="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                    />
-                </div>
-            </div>
-            <p className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg lg:text-xl font-sans text-gray-700 group-hover:text-yellow-600 transition-colors text-center break-words">
-                {category.name}
-            </p>
-        </div>
-    );
-}
+
+
+import { useNavigate } from 'react-router-dom';
 
 function ProductCard({ gem }) {
     const navigate = useNavigate();
@@ -128,6 +109,28 @@ function ProductCard({ gem }) {
         </div>
     );
 }
+
+
+
+
+
+const CategoryCard = ({ category }) => (
+    <div className="text-center group max-w-[140px] sm:max-w-[160px] md:max-w-[180px] mx-auto overflow-hidden">
+        <div className="rounded-xl overflow-hidden p-2 bg-white transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(250,204,21,0.4),0_0_40px_rgba(250,204,21,0.25),0_0_80px_rgba(250,204,21,0.15)]">
+            {/* Fixed image container */}
+            <div className="w-full h-24 sm:h-28 md:h-32 flex items-center justify-center">
+                <img
+                    src={category.image}
+                    alt={category.name}
+                    className="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                />
+            </div>
+        </div>
+        <p className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg lg:text-xl font-sans text-gray-700 group-hover:text-yellow-600 transition-colors text-center break-words">
+            {category.name}
+        </p>
+    </div>
+);
 
 
 
@@ -350,3 +353,4 @@ export default function GemstoneCategory() {
         </>
     );
 }
+

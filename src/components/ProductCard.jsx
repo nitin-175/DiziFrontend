@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
+import { useNavigate } from 'react-router-dom';
 
 // Star Icon Component
 const StarIcon = ({ filled }) => (
@@ -10,6 +11,7 @@ const StarIcon = ({ filled }) => (
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
+  const navigate = useNavigate();
   const renderStars = (rating) => {
     let stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -19,7 +21,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg p-4 flex flex-col justify-between h-full group">
+    <div className="bg-white rounded-lg p-4 flex flex-col justify-between h-full group cursor-pointer" onClick={() => navigate(`/gem/${product.id}`)}>
       <div>
         <div className="relative bg-gray-50 rounded-lg mb-4 p-4 flex items-center justify-center h-48">
           <img
@@ -57,8 +59,8 @@ const ProductCard = ({ product }) => {
       <div className="mt-4">
     <div className="flex items-center justify-between text-sm mb-3">
       <div className="flex items-center text-gray-800">
-        <p className="font-bold text-lg text-orange-600">₹{product.salePrice.toFixed(2)}</p>
-        {product.originalPrice && <p className="text-gray-400 line-through ml-2">₹{product.originalPrice.toFixed(2)}</p>}
+        <p className="font-bold text-lg text-orange-600">{product.salePrice.toFixed(2)}</p>
+        {product.originalPrice && <p className="text-gray-400 line-through ml-2">{product.originalPrice.toFixed(2)}</p>}
       </div>
        <p className="text-gray-400">/ gram</p>
         </div>
@@ -72,7 +74,7 @@ const ProductCard = ({ product }) => {
         <button
           className="w-full bg-orange-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-600 transition-colors disabled:bg-gray-300"
           disabled={product.outOfStock}
-          onClick={() => addToCart(product)}
+          onClick={e => { e.stopPropagation(); addToCart(product); }}
         >
           Add to Cart
         </button>
