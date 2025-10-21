@@ -1,97 +1,100 @@
 import React from "react";
 
-const BoyIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="blue" viewBox="0 0 24 24">
-    <path d="M12 2a5 5 0 00-5 5v1a5 5 0 0010 0V7a5 5 0 00-5-5zm0 12c-5.33 0-8 2.67-8 6v2h16v-2c0-3.33-2.67-6-8-6z" />
-  </svg>
-);
-
-const GirlIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="pink" viewBox="0 0 24 24">
-    <path d="M12 2a5 5 0 00-5 5v1a5 5 0 0010 0V7a5 5 0 00-5-5zm0 12c-3.31 0-6 2.02-6 4.5V22h12v-3.5c0-2.48-2.69-4.5-6-4.5z" />
-  </svg>
-);
-
 const testimonials = [
   {
     name: "Priya Sharma",
-    gender: "female",
     rating: 5,
     date: "July 15, 2023",
-    review: "The Rudraksha mala I purchased is authentic and radiates such calming energy. Packaging was beautiful and delivery was fast. Jai Shree Ram!",
+    review:
+      "The Rudraksha mala I purchased is authentic and radiates a calming energy. The packaging felt divine and the delivery was fast. Jai Shree Ram!",
   },
   {
     name: "Rahul Mehta",
-    gender: "male",
     rating: 5,
     date: "June 28, 2023",
-    review: "Very impressed with the quality of crystals. The Sphatik mala feels divine during meditation. Highly recommended for spiritual seekers.",
+    review:
+      "The Sphatik mala quality is exceptional — it feels charged with positive vibrations. I felt instant peace during meditation. Pure authenticity.",
   },
   {
     name: "Ananya Iyer",
-    gender: "female",
     rating: 4,
     date: "August 2, 2023",
-    review: "I ordered a Shri Yantra for my puja altar. It was beautifully crafted and blessed. Felt the positivity in my home instantly.",
+    review:
+      "I ordered a Shri Yantra for my puja altar. It was exquisitely crafted and blessed. You can truly feel the sacred energy it radiates.",
   },
   {
     name: "Arjun Singh",
-    gender: "male",
     rating: 5,
     date: "July 5, 2023",
-    review: "High quality incense sticks and dhoop cones. They create such a divine fragrance during daily prayers. Will definitely buy again!",
-  }
+    review:
+      "The incense and dhoop cones are divine. The fragrance fills the room with serenity. A truly spiritual experience — highly recommended.",
+  },
 ];
 
-const StarRating = ({ rating }) => {
-  const totalStars = 5;
-  return (
-    <div style={{ display: "flex", alignItems: "center" }}>
-      {[...Array(totalStars)].map((_, index) => (
-        <span
-          key={index}
-          style={{
-            color: index < rating ? "#FFD700" : "#ccc",
-            fontSize: "20px",
-            marginRight: "2px"
-          }}
-        >
-          ★
-        </span>
-      ))}
-    </div>
-  );
-};
+const StarRating = ({ rating }) => (
+  <div style={{ display: "flex", gap: "3px" }}>
+    {[...Array(5)].map((_, i) => (
+      <span
+        key={i}
+        style={{
+          color: i < rating ? "#FFD700" : "#555",
+          fontSize: "20px",
+          textShadow: i < rating ? "0 0 12px #FFD700" : "none",
+        }}
+      >
+        ★
+      </span>
+    ))}
+  </div>
+);
 
-const TestimonialCard = ({ name, gender, rating, date, review }) => (
+const TestimonialCard = ({ name, rating, date, review }) => (
   <div
     style={{
-      background: "linear-gradient(135deg, #FFF8E1, #FFE0B2)",
+      minWidth: "360px",
+      maxWidth: "400px",
+      background: "rgba(255,255,255,0.1)",
+      border: "1px solid rgba(255,215,0,0.3)",
       borderRadius: "24px",
-      boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
-      padding: "24px",
-      margin: "0 8px",
-      width: "300px",
-      minWidth: "250px",
-      flexShrink: 0,
-      transition: "transform 0.3s",
-      position: "relative",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between"
+      padding: "28px",
+      backdropFilter: "blur(20px)",
+      boxShadow: "0 0 40px rgba(255,215,0,0.15)",
+      transition: "all 0.5s ease",
+      color: "#fff",
+      transformStyle: "preserve-3d",
+      perspective: "1000px",
     }}
-    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.transform = "translateY(-10px) rotateY(3deg)";
+      e.currentTarget.style.boxShadow = "0 0 50px rgba(255,215,0,0.4)";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.transform = "translateY(0) rotateY(0deg)";
+      e.currentTarget.style.boxShadow = "0 0 40px rgba(255,215,0,0.15)";
+    }}
   >
-    <div style={{ display: "flex", alignItems: "center", marginBottom: "12px" }}>
-      {gender === "male" ? <BoyIcon /> : <GirlIcon />}
-      <div style={{ marginLeft: "12px" }}>
-        <h3 style={{ fontSize: "18px", fontWeight: "600" }}>{name}</h3>
-        <p style={{ fontSize: "12px", color: "#666" }}>{date}</p>
-      </div>
-    </div>
+    <h3
+      style={{
+        fontSize: "20px",
+        fontWeight: "600",
+        color: "#FFF8DC",
+        marginBottom: "6px",
+        textShadow: "0 0 10px rgba(255,215,0,0.4)",
+      }}
+    >
+      {name}
+    </h3>
+    <p style={{ fontSize: "13px", opacity: 0.8, marginBottom: "10px" }}>{date}</p>
     <StarRating rating={rating} />
-    <p style={{ fontSize: "14px", marginTop: "12px", color: "#333", lineHeight: "1.4" }}>
+    <p
+      style={{
+        fontSize: "15px",
+        lineHeight: "1.8",
+        marginTop: "14px",
+        opacity: 0.9,
+        fontWeight: "400",
+      }}
+    >
       {review}
     </p>
   </div>
@@ -99,54 +102,139 @@ const TestimonialCard = ({ name, gender, rating, date, review }) => (
 
 const Testimonials = () => {
   return (
-    <div style={{ fontFamily: "sans-serif", display: "flex", justifyContent: "center", alignItems: "center", minHeight: "80vh", width: "100%", padding: "16px" }}>
-      <div style={{ display: "flex", width: "100%", borderRadius: "24px", overflow: "hidden", boxShadow: "0 12px 24px rgba(0,0,0,0.3)", flexDirection: "row" }}>
-        <div style={{ flex: 2, padding: "24px", overflowX: "hidden", overflowY: "visible", display: "flex", alignItems: "center" }}>
-          <div
-            style={{
-              display: "flex",
-              gap: "16px",
-              animation: "marquee 30s linear infinite",
-              width: "max-content"
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.animationPlayState = "paused")}
-            onMouseLeave={(e) => (e.currentTarget.style.animationPlayState = "running")}
-          >
-            {[...testimonials, ...testimonials].map((testimonial, index) => (
-              <TestimonialCard key={index} {...testimonial} />
-            ))}
-          </div>
-        </div>
-        <div className="testimonial-side" style={{ flex: 1, background: "#FF8C00", color: "white", padding: "32px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-          <div>
-            <h4 style={{ fontSize: "18px", fontWeight: "600", color: "#FFF9C4", marginBottom: "8px" }}>🙏 DEVOTEES SPEAK</h4>
-            <h2 style={{ fontSize: "28px", fontWeight: "700", lineHeight: "1.2" }}>TRUSTED FOR AUTHENTIC SPIRITUAL PRODUCTS</h2>
-          </div>
-          <div>
-            <hr style={{ borderColor: "#FFF59D", margin: "16px 0" }} />
-            <p style={{ fontSize: "24px", fontWeight: "300", color: "#FFF9C4" }}>Blessed & Verified</p>
-            <p style={{ fontSize: "14px", textTransform: "uppercase", letterSpacing: "2px", color: "#FFF59D", marginTop: "8px" }}>EXCELLENT</p>
-            <div style={{ display: "flex", alignItems: "center", marginTop: "8px", gap: "8px" }}>
-              <StarRating rating={5} />
-              <span style={{ fontSize: "14px", color: "#FFF59D" }}>| from 500+ Devotees</span>
-            </div>
-          </div>
-        </div>
+    <section
+      style={{
+        position: "relative",
+        width: "100%",
+        overflow: "hidden",
+        background:
+          "radial-gradient(circle at center, #3e2600 0%, #1a0e00 70%, #0d0500 100%)",
+        padding: "120px 0",
+      }}
+    >
+      {/* Glowing aura background */}
+      <div
+        style={{
+          position: "absolute",
+          top: "0",
+          left: "50%",
+          width: "700px",
+          height: "700px",
+          transform: "translateX(-50%)",
+          background: "radial-gradient(circle, rgba(255, 215, 0, 0.15), transparent 70%)",
+          filter: "blur(80px)",
+          zIndex: 0,
+        }}
+      />
+
+      {/* Floating particles */}
+      {[...Array(25)].map((_, i) => (
+        <div
+          key={i}
+          style={{
+            position: "absolute",
+            width: "8px",
+            height: "8px",
+            background: "rgba(255, 215, 0, 0.9)",
+            borderRadius: "50%",
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            animation: `floatParticle ${8 + Math.random() * 10}s ease-in-out infinite`,
+            opacity: 0.7,
+            filter: "blur(1px)",
+          }}
+        />
+      ))}
+
+      {/* Heading */}
+      <div
+        style={{
+          textAlign: "center",
+          color: "white",
+          marginBottom: "70px",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
+        <h4
+          style={{
+            fontSize: "18px",
+            letterSpacing: "5px",
+            color: "#FFD700",
+            marginBottom: "10px",
+          }}
+        >
+          Our Testimonials
+        </h4>
+        <h2
+          style={{
+            fontSize: "42px",
+            fontWeight: "700",
+            background:
+              "linear-gradient(90deg, #FFF7B0, #FFD700, #FFB300, #FFD700, #FFF7B0)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            textShadow: "0 0 30px rgba(255,215,0,0.5)",
+            animation: "shine 6s linear infinite",
+            backgroundSize: "200% auto",
+          }}
+        >
+          BLESSED EXPERIENCES. DIVINE TRUST.
+        </h2>
       </div>
+
+      {/* Testimonials Scroll */}
+      <div
+        style={{
+          display: "flex",
+          gap: "30px",
+          width: "max-content",
+          animation: "scrollX 70s linear infinite",
+          paddingLeft: "8%",
+          zIndex: 2,
+          position: "relative",
+        }}
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.animationPlayState = "paused")
+        }
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.animationPlayState = "running")
+        }
+      >
+        {[...testimonials, ...testimonials].map((t, i) => (
+          <TestimonialCard key={i} {...t} />
+        ))}
+      </div>
+
       <style>
         {`
-          @keyframes marquee {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
+          @keyframes scrollX {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
           }
+
+          @keyframes floatParticle {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+          }
+
+          @keyframes shine {
+            to {
+              background-position: 200% center;
+            }
+          }
+
           @media (max-width: 768px) {
-            .testimonial-side {
-              display: none;
+            h2 {
+              font-size: 26px !important;
+            }
+            section {
+              padding: 70px 0;
             }
           }
         `}
       </style>
-    </div>
+    </section>
   );
 };
 

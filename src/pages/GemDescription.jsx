@@ -1,65 +1,532 @@
+import React, { useState } from "react";
+import { FaCertificate,
+  FaTruck,
+  FaStar,
+  FaRing,
+  FaPrayingHands,
+  FaCrown,
+  FaGem,
+  FaShieldAlt,
+  FaCheckCircle,
+  FaGift,} from "react-icons/fa";
 
-import React from 'react';
-import { useParams } from 'react-router-dom';
+const GemDescription = () => {
+  const products = [
+    { 
+    id: 1, 
+    name: 'Natural Pearl', 
+    price: 1150, 
+    carat: 5.25, 
+    sku: "GP1001",
+    images: [
+      '/assets/gemstones/img2.avif',
+      '/assets/gemstones/img2a.avif',
+      '/assets/gemstones/img2b.avif'
+    ],
+    description: 'Natural Pearls are timeless treasures of the ocean, admired for purity and elegance. They symbolize innocence, beauty, and grace.',
+    details: [
+      { title: "Origin", value: "South Sea, Australia" },
+      { title: "Weight", value: "5.25 Carats" },
+      { title: "Clarity", value: "Opaque" },
+      { title: "Treatment", value: "None (Natural)" }
+    ]
+  },
+  { 
+    id: 2, 
+    name: 'Red Coral', 
+    price: 850, 
+    carat: 6.0, 
+    sku: "GP1002",
+    images: [
+      '/assets/gemstones/img3.avif',
+      '/assets/gemstones/img3a.avif',
+      '/assets/gemstones/img3b.avif'
+    ],
+    description: 'Red Coral, with its fiery hue, embodies courage, energy, and vitality. It protects against negativity and fuels determination.',
+    details: [
+      { title: "Origin", value: "Mediterranean Sea" },
+      { title: "Weight", value: "6.0 Carats" },
+      { title: "Clarity", value: "Translucent" },
+      { title: "Treatment", value: "Polished Only" }
+    ]
+  },
+  { 
+    id: 3, 
+    name: 'Hessonite', 
+    price: 950, 
+    carat: 4.5, 
+    sku: "GP1003",
+    images: [
+      '/assets/gemstones/img4.avif',
+      '/assets/gemstones/img4a.avif',
+      '/assets/gemstones/img4b.avif'
+    ],
+    description: 'Hessonite shines with a honey glow, dispels confusion, attracts prosperity, and brings focus in life.',
+    details: [
+      { title: "Origin", value: "Sri Lanka Mines" },
+      { title: "Weight", value: "4.5 Carats" },
+      { title: "Clarity", value: "Included" },
+      { title: "Treatment", value: "Heat Treated" }
+    ]
+  },
+  { 
+    id: 4, 
+    name: "Cat's Eye", 
+    price: 1300, 
+    carat: 3.75, 
+    sku: "GP1004",
+    images: [
+      '/assets/gemstones/img5.avif',
+      '/assets/gemstones/img5a.avif',
+      '/assets/gemstones/img5b.avif'
+    ],
+    description: 'Cat’s Eye gemstone shows a luminous band, believed to protect against evil and enhance intuition.',
+    details: [
+      { title: "Origin", value: "India (Chrysoberyl)" },
+      { title: "Weight", value: "3.75 Carats" },
+      { title: "Clarity", value: "Semi-Transparent" },
+      { title: "Treatment", value: "Unheated" }
+    ]
+  },
+  { 
+    id: 5, 
+    name: 'Amethyst', 
+    price: 450, 
+    carat: 7.0, 
+    sku: "GP1005",
+    images: [
+      '/assets/gemstones/img6.avif',
+      '/assets/gemstones/img6a.avif',
+      '/assets/gemstones/img6b.avif'
+    ],
+    description: 'Amethyst is a stone of clarity and peace. It calms the mind, reduces stress, and promotes wisdom.',
+    details: [
+      { title: "Origin", value: "Brazil" },
+      { title: "Weight", value: "7.0 Carats" },
+      { title: "Clarity", value: "Eye Clean" },
+      { title: "Treatment", value: "Heat Treated" }
+    ]
+  },
+  { 
+    id: 6, 
+    name: 'Turquoise', 
+    price: 600, 
+    carat: 8.25, 
+    sku: "GP1006",
+    images: [
+      '/assets/gemstones/img7.avif',
+      '/assets/gemstones/img7a.avif',
+      '/assets/gemstones/img7b.avif'
+    ],
+    description: 'Turquoise is a gemstone of protection and healing, fostering communication and success.',
+    details: [
+      { title: "Origin", value: "Iran (Nishapur)" },
+      { title: "Weight", value: "8.25 Carats" },
+      { title: "Clarity", value: "Opaque" },
+      { title: "Treatment", value: "Stabilized" }
+    ]
+  },
+  { 
+    id: 7, 
+    name: 'Opal', 
+    price: 2100, 
+    carat: 4.0, 
+    sku: "GP1007",
+    images: [
+      '/assets/gemstones/img8.avif',
+      '/assets/gemstones/img8a.avif',
+      '/assets/gemstones/img8b.avif'
+    ],
+    description: 'Opal, the “Queen of Gemstones,” inspires creativity, boosts confidence, and brings balance.',
+    details: [
+      { title: "Origin", value: "Ethiopia" },
+      { title: "Weight", value: "4.0 Carats" },
+      { title: "Clarity", value: "Translucent with Fire" },
+      { title: "Treatment", value: "None" }
+    ]
+  },
+  { 
+    id: 8, 
+    name: 'Garnet', 
+    price: 720, 
+    carat: 5.5, 
+    sku: "GP1008",
+    images: [
+      '/assets/gemstones/img9.avif',
+      '/assets/gemstones/img9a.avif',
+      '/assets/gemstones/img9b.avif'
+    ],
+    description: 'Garnet symbolizes love and vitality, energizing the body and strengthening relationships.',
+    details: [
+      { title: "Origin", value: "Mozambique" },
+      { title: "Weight", value: "5.5 Carats" },
+      { title: "Clarity", value: "Transparent" },
+      { title: "Treatment", value: "Unheated" }
+    ]
+  },
+  { 
+    id: 9, 
+    name: 'Blue Topaz', 
+    price: 300, 
+    carat: 9.0, 
+    sku: "GP1009",
+    images: [
+      '/assets/gemstones/img10.avif',
+      '/assets/gemstones/img10a.avif',
+      '/assets/gemstones/img10b.avif'
+    ],
+    description: 'Blue Topaz represents calmness and creativity, helping reduce stress and align thoughts.',
+    details: [
+      { title: "Origin", value: "Russia" },
+      { title: "Weight", value: "9.0 Carats" },
+      { title: "Clarity", value: "Transparent" },
+      { title: "Treatment", value: "Irradiated & Heated" }
+    ]
+  },
+  { 
+    id: 10, 
+    name: 'Peridot', 
+    price: 550, 
+    carat: 6.5, 
+    sku: "GP1010",
+    images: [
+      '/assets/gemstones/img11.avif',
+      '/assets/gemstones/img11a.avif',
+      '/assets/gemstones/img11b.avif'
+    ],
+    description: 'Peridot radiates a fresh green glow, bringing abundance, happiness, and protection.',
+    details: [
+      { title: "Origin", value: "Arizona, USA" },
+      { title: "Weight", value: "6.5 Carats" },
+      { title: "Clarity", value: "Eye Clean" },
+      { title: "Treatment", value: "None" }
+    ]
+  },
+  { 
+    id: 11, 
+    name: 'Citrine', 
+    price: 400, 
+    carat: 8.0, 
+    sku: "GP1011",
+    images: [
+      '/assets/gemstones/img12.avif',
+      '/assets/gemstones/img12a.avif',
+      '/assets/gemstones/img12b.avif'
+    ],
+    description: 'Citrine, the “merchant’s stone,” attracts wealth, positivity, and confidence.',
+    details: [
+      { title: "Origin", value: "Madagascar" },
+      { title: "Weight", value: "8.0 Carats" },
+      { title: "Clarity", value: "Transparent" },
+      { title: "Treatment", value: "Heat Treated" }
+    ]
+  },
+  { 
+    id: 12, 
+    name: 'Aquamarine', 
+    price: 1800, 
+    carat: 5.0, 
+    sku: "GP1012",
+    images: [
+      '/assets/gemstones/img13.avif',
+      '/assets/gemstones/img13a.avif',
+      '/assets/gemstones/img13b.avif'
+    ],
+    description: 'Aquamarine, with sea-blue radiance, calms tempers and enhances communication.',
+    details: [
+      { title: "Origin", value: "Pakistan" },
+      { title: "Weight", value: "5.0 Carats" },
+      { title: "Clarity", value: "Transparent" },
+      { title: "Treatment", value: "Heat Treated" }
+    ]
+  },
+  { 
+    id: 13, 
+    name: 'Moonstone', 
+    price: 650, 
+    carat: 7.5, 
+    sku: "GP1013",
+    images: [
+      '/assets/gemstones/img14.avif',
+      '/assets/gemstones/img14a.avif',
+      '/assets/gemstones/img14b.avif'
+    ],
+    description: 'Moonstone glows with silvery sheen, enhancing intuition and emotional balance.',
+    details: [
+      { title: "Origin", value: "Sri Lanka" },
+      { title: "Weight", value: "7.5 Carats" },
+      { title: "Clarity", value: "Semi-Transparent" },
+      { title: "Treatment", value: "None" }
+    ]
+  },
+  { 
+    id: 14, 
+    name: 'Lapis Lazuli', 
+    price: 480, 
+    carat: 10.0, 
+    sku: "GP1014",
+    images: [
+      '/assets/gemstones/img15.avif',
+      '/assets/gemstones/img15a.avif',
+      '/assets/gemstones/img15b.avif'
+    ],
+    description: 'Lapis Lazuli, with its celestial blue, has been prized as a stone of wisdom and truth.',
+    details: [
+      { title: "Origin", value: "Afghanistan" },
+      { title: "Weight", value: "10.0 Carats" },
+      { title: "Clarity", value: "Opaque with Pyrite" },
+      { title: "Treatment", value: "Polished Only" }
+    ]
+  },
+  { 
+    id: 15, 
+    name: 'Sunstone', 
+    price: 520, 
+    carat: 6.75, 
+    sku: "GP1015",
+    images: [
+      '/assets/gemstones/img16.avif',
+      '/assets/gemstones/img16a.avif',
+      '/assets/gemstones/img16b.avif'
+    ],
+    description: 'Sunstone sparkles with golden inclusions, inspiring joy, positivity, and independence.',
+    details: [
+      { title: "Origin", value: "Oregon, USA" },
+      { title: "Weight", value: "6.75 Carats" },
+      { title: "Clarity", value: "Translucent" },
+      { title: "Treatment", value: "None" }
+    ]
+  },
+  { 
+    id: 16, 
+    name: 'Jade', 
+    price: 900, 
+    carat: 5.0, 
+    sku: "GP1016",
+    images: [
+      '/assets/gemstones/img17.avif',
+      '/assets/gemstones/img17a.avif',
+      '/assets/gemstones/img17b.avif'
+    ],
+    description: 'Jade is a stone of luck and longevity, balancing emotions and attracting prosperity.',
+    details: [
+      { title: "Origin", value: "Myanmar" },
+      { title: "Weight", value: "5.0 Carats" },
+      { title: "Clarity", value: "Opaque" },
+      { title: "Treatment", value: "Dyed" }
+    ]
+  },
+  { 
+    id: 17, 
+    name: 'Iolite', 
+    price: 350, 
+    carat: 4.25, 
+    sku: "GP1017",
+    images: [
+      '/assets/gemstones/img18.avif',
+      '/assets/gemstones/img18a.avif',
+      '/assets/gemstones/img18b.avif'
+    ],
+    description: 'Iolite, the “Viking’s Compass,” enhances vision, determination, and clarity of purpose.',
+    details: [
+      { title: "Origin", value: "India" },
+      { title: "Weight", value: "4.25 Carats" },
+      { title: "Clarity", value: "Transparent" },
+      { title: "Treatment", value: "Unheated" }
+    ]
+  },
+  { 
+    id: 18, 
+    name: 'Spinel', 
+    price: 1500, 
+    carat: 3.5, 
+    sku: "GP1018",
+    images: [
+      '/assets/gemstones/img19.avif',
+      '/assets/gemstones/img19a.avif',
+      '/assets/gemstones/img19b.avif'
+    ],
+    description: 'Spinel is a stone of rejuvenation, bringing vitality, resilience, and strength.',
+    details: [
+      { title: "Origin", value: "Myanmar" },
+      { title: "Weight", value: "3.5 Carats" },
+      { title: "Clarity", value: "Transparent" },
+      { title: "Treatment", value: "Unheated" }
+    ]
+  },
+  { 
+    id: 19, 
+    name: 'Zircon', 
+    price: 700, 
+    carat: 6.0, 
+    sku: "GP1019",
+    images: [
+      '/assets/gemstones/img5.avif',
+      '/assets/gemstones/img5a.avif',
+      '/assets/gemstones/img5b.avif'
+    ],
+    description: 'Zircon shines with fiery brilliance, attracting prosperity and boosting self-confidence.',
+    details: [
+      { title: "Origin", value: "Cambodia" },
+      { title: "Weight", value: "6.0 Carats" },
+      { title: "Clarity", value: "Transparent" },
+      { title: "Treatment", value: "Heat Treated" }
+    ]
+  },
+  { 
+    id: 20, 
+    name: 'Tanzanite', 
+    price: 2500, 
+    carat: 3.0, 
+    sku: "GP1020",
+    images: [
+      '/assets/gemstones/img11.avif',
+      '/assets/gemstones/img11a.avif',
+      '/assets/gemstones/img11b.avif'
+    ],
+    description: 'Tanzanite displays violet-blue hues, enhancing intuition and symbolizing rare elegance.',
+    details: [
+      { title: "Origin", value: "Tanzania" },
+      { title: "Weight", value: "3.0 Carats" },
+      { title: "Clarity", value: "Eye Clean" },
+      { title: "Treatment", value: "Heat Treated" }
+    ]
+  }
+  ];
 
-// Gemstone data from GemstoneCategory.jsx
-const gemstones = [
-	{ id: 1, name: 'Natural Pearl', price: 1150, carat: '5.25', image: '/assets/gemstones/img2.avif', description: 'A symbol of purity and wisdom, perfect for astrological benefits and jewelry.', highlights: ['Certified Natural Pearl', 'Ideal for Moon sign', 'Premium luster', 'Astrological benefits'], stock: 12 },
-	{ id: 2, name: 'Red Coral', price: 850, carat: '6.0', image: '/assets/gemstones/img3.avif', description: 'Red Coral is known for its vibrant color and astrological significance for Mars.', highlights: ['Premium Italian Coral', 'Astrological use', 'Rich color', 'Certified origin'], stock: 7 },
-	{ id: 3, name: 'Hessonite', price: 950, carat: '4.5', image: '/assets/gemstones/img4.avif', description: 'Hessonite garnet, also called Gomed, is worn for Rahu and brings clarity.', highlights: ['Natural Hessonite', 'Astrological remedy for Rahu', 'Rich honey color', 'Lab certified'], stock: 5 },
-	{ id: 4, name: 'Cat\'s Eye', price: 1300, carat: '3.75', image: '/assets/gemstones/img5.avif', description: 'Cat’s Eye is worn for Ketu and is believed to bring protection and insight.', highlights: ['Natural Cat’s Eye', 'Astrological use for Ketu', 'Distinct chatoyancy', 'Certified stone'], stock: 3 },
-	{ id: 5, name: 'Amethyst', price: 450, carat: '7.0', image: '/assets/gemstones/img6.avif', description: 'Amethyst is a calming stone, ideal for meditation and spiritual growth.', highlights: ['Natural Amethyst', 'Deep purple color', 'Calming energy', 'Astrological benefits'], stock: 10 },
-	// ...add more as needed
-];
+  const product = products[0];
 
+  const [selectedImage, setSelectedImage] = useState(product.images[0]);
+  const [certification, setCertification] = useState("Free Lab Certificate");
+  const [energization, setEnergization] = useState("No Energization");
+  const [selection, setSelection] = useState("Loose Gemstone");
 
-export default function GemDescription() {
-	const { id } = useParams();
-	const gem = gemstones.find(g => g.id === Number(id));
+  return (
+    <main className="bg-gradient-to-br from-purple-50 via-white to-amber-50 min-h-screen text-neutral-800 font-serif">
+      <section className="container mx-auto px-6 py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        {/* Left: Image Gallery */}
+        <div>
+          <div className="rounded-2xl overflow-hidden border-2 border-amber-200 p-4 flex justify-center items-center bg-gradient-to-br from-white to-amber-50 shadow-xl">
+            <img
+              src={selectedImage}
+              alt={product.name}
+              className="max-h-[320px] w-auto object-contain"
+            />
+          </div>
 
-	if (!gem) {
-		return <div className="p-8 text-center text-red-600 text-xl">Gemstone not found.</div>;
-	}
+          {/* Thumbnails */}
+          <div className="mt-4 grid grid-cols-5 gap-3">
+            {product.images.map((img, idx) => (
+              <button
+                key={idx}
+                onClick={() => setSelectedImage(img)}
+                className={`rounded-xl p-2 flex justify-center items-center transition-all duration-300 ${
+                  selectedImage === img
+                    ? "ring-2 ring-amber-500 shadow-md"
+                    : "hover:ring-1 hover:ring-gray-400"
+                }`}
+              >
+                <img
+                  src={img}
+                  alt={`Thumbnail ${idx + 1}`}
+                  className="max-h-14 w-auto object-contain"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
 
-	return (
-		<div className="container mx-auto p-4 md:p-8 flex flex-col md:flex-row gap-8">
-			{/* Image Section */}
-			<div className="flex-1 flex flex-col items-center md:items-start">
-				<img src={gem.image} alt={gem.name} className="w-64 h-64 object-contain rounded-lg shadow-lg mb-4" />
-				<div className="flex gap-2 mt-2">
-					<span className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold">In Stock</span>
-					<span className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs font-semibold">Fast Delivery</span>
-				</div>
-			</div>
+        {/* Right: Product Info */}
+        <div className="flex flex-col">
+          <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 tracking-wide">
+            {product.name} - {product.carat} Carats
+          </h1>
+          <div className="flex items-center gap-2 mt-2">
+            <p className="text-3xl font-semibold text-amber-700">
+              ₹{product.price.toLocaleString()}
+            </p>
+            <span className="text-sm text-red-500">Only 1 Left!</span>
+          </div>
+          <p className="text-sm text-gray-600 mt-1">
+            SKU: <span className="font-medium">{product.sku}</span>
+          </p>
 
-			{/* Details & Buy Box */}
-			<div className="flex-1 flex flex-col gap-4">
-				<h1 className="text-3xl font-bold text-gray-900">{gem.name}</h1>
-				<div className="flex items-center gap-2 text-yellow-500 text-lg">
-					<span>★ 4.7</span>
-					<span className="text-gray-500 text-base">(210 ratings)</span>
-				</div>
-				<div className="text-lg text-gray-700">{gem.carat} Ratti</div>
-				<div className="text-2xl font-bold text-green-700">₹{gem.price.toLocaleString()}</div>
-				<div className="text-sm text-gray-500">Inclusive of all taxes</div>
-				<div className="mt-2">
-					<span className="font-semibold">Description: </span>
-					<span>{gem.description}</span>
-				</div>
-				<ul className="list-disc pl-5 mt-2 text-gray-700">
-					{gem.highlights.map((h, i) => <li key={i}>{h}</li>)}
-				</ul>
+          {/* Certification */}
+          <div className="mt-6">
+            <label className="text-sm font-medium text-gray-700 mb-1 flex items-center gap-2">
+              <FaCertificate className="text-amber-600" />
+              Certification *
+            </label>
+            <select
+              value={certification}
+              onChange={(e) => setCertification(e.target.value)}
+              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-amber-500"
+            >
+              <option>Free Lab Certificate</option>
+              <option>Premium Certificate (+₹2000)</option>
+            </select>
+          </div>
 
-				{/* Buy Box */}
-				<div className="border rounded-lg p-4 mt-4 bg-gray-50 shadow-sm w-full max-w-xs">
-					<div className="text-xl font-bold text-green-700 mb-2">₹{gem.price.toLocaleString()}</div>
-					<div className="text-sm text-gray-600 mb-2">FREE delivery: <span className="font-semibold text-black">Tomorrow</span></div>
-					<div className="text-sm text-gray-600 mb-4">Sold by <span className="font-semibold text-black">Dizi Gems</span></div>
-					<button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 rounded mb-2 transition">Add to Cart</button>
-					<button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 rounded transition">Buy Now</button>
-					<div className="text-xs text-gray-500 mt-2">Secure transaction • 7-day return policy</div>
-				</div>
-			</div>
-		</div>
-	);
-}
+          {/* Pooja / Energization */}
+          <div className="mt-4">
+            <label className="text-sm font-medium text-gray-700 mb-1 flex items-center gap-2">
+              <FaPrayingHands className="text-emerald-600" />
+              Pooja / Energization *
+            </label>
+            <select
+              value={energization}
+              onChange={(e) => setEnergization(e.target.value)}
+              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-500"
+            >
+              <option>No Energization</option>
+              <option>Basic Energization</option>
+              <option>Advanced Energization</option>
+            </select>
+          </div>
+
+          {/* Select for Ring / Pendant / Bracelet */}
+          <div className="mt-6">
+            <label className="text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
+              <FaRing className="text-pink-600" />
+              Select for Ring / Pendant / Bracelet *
+            </label>
+            <div className="grid grid-cols-5 gap-3">
+              {["Loose Gemstone", "Ring", "Pendant", "Bracelet", "Brooch"].map(
+                (opt) => (
+                  <button
+                    key={opt}
+                    onClick={() => setSelection(opt)}
+                    className={`rounded-xl px-3 py-2 text-sm transition-all duration-300 ${
+                      selection === opt
+                        ? "ring-2 ring-amber-500 bg-amber-50 shadow-md"
+                        : "border hover:ring-1 hover:ring-gray-400"
+                    }`}
+                  >
+                    {opt}
+                  </button>
+                )
+              )}
+            </div>
+          </div>
+
+          {/* Add to Cart */}
+          <button className="mt-8 w-full py-4 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-amber-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:to-amber-500 shadow-lg transition-all flex items-center justify-center gap-3">
+            <FaStar className="text-white" />
+            ADD TO CART
+          </button>
+
+          {/* Dispatch Date */}
+          <p className="mt-6 text-sm text-gray-700 flex items-center gap-2">
+            <FaTruck className="text-blue-600" />
+            Expected Dispatch Date:
+            <span className="font-medium ml-1 text-gray-900">
+              17 SEP, 2025
+            </span>
+          </p>
+        </div>
+      </section>
+    </main>
+  );
+};
+
+export default GemDescription;
